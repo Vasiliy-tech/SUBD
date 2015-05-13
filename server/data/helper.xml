@@ -1,0 +1,4 @@
+<class type='resource.TestHelper'>
+    <user><class type='main.user.UserProfile'><login>test_test</login><password>test_test</password><email>test@test.test</email></class></user>
+    <admin><class type='main.user.UserProfile'><login>admin</login><password>admin</password><email>admin@gmail.com</email></class></admin>
+</class>

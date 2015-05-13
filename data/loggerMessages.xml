@@ -1,0 +1,51 @@
+<class type='resource.LoggerMessages'>
+    <doPostStart>doPost Start</doPostStart>
+    <doPostFinish>doPost Success</doPostFinish>
+    <doGetStart>doGet Start</doGetStart>
+    <doGetFinish>doGet Success</doGetFinish>
+    <isAdmin>User:{} is admin</isAdmin>
+    <isNotAdmin>User:{} is not admin</isNotAdmin>
+    <wrongAction>Wrong action</wrongAction>
+    <statistic>Getting Statistic</statistic>
+    <stop>Stopping server</stop>
+    <notAuthorised>Not Authorised</notAuthorised>
+    <authorised>User:{} is Authorised</authorised>
+    <hasAuthorised>User:{} has Authorised</hasAuthorised>
+    <lackOfParam>No param "{}" in request</lackOfParam>
+    <paramHasWrongType>Param:"{}" has wrong type</paramHasWrongType>
+    <signUp>New user is signing up</signUp>
+    <signIn>User is signing in</signIn>
+    <alreadyLoggedIn>User:{} is already Logged In</alreadyLoggedIn>
+    <block>Authorization and signing up is blocked</block>
+    <wrongPasOrLogin>Wrong password:"{}" or login:"{}"</wrongPasOrLogin>
+    <loggedOut>User:{} logged out</loggedOut>
+    <loginIsAlreadyExist>User with such login "{}" is already exist</loginIsAlreadyExist>
+    <wrongSignUpData>Wrong login:"{}" or email:"{}" or password:"{}"</wrongSignUpData>
+    <onMessage>User:{} has sent Message:{}</onMessage>
+    <onOpen>User:{} is opening connection</onOpen>
+    <onClose>User:{} has closed connection</onClose>
+    <configure>Configure</configure>
+    <setBlock>Signing in and Signing up are blocked</setBlock>
+    <unsetBlock>Signing in and Signing up are released</unsetBlock>
+    <startGame>Start game</startGame>
+    <firstPlayer>First player</firstPlayer>
+    <secondPlayer>Second player</secondPlayer>
+    <sessionFinished>Session finished</sessionFinished>
+    <errorInReadingJSON>Error while getting the JSON: {}</errorInReadingJSON>
+    <draw>Draw between {}, {}</draw>
+    <isWinner>{} is winner</isWinner>
+    <isLoser>{} is loser</isLoser>
+    <signUpSuccess>User {} was successfully signed up</signUpSuccess>
+    <gameUserPosition>User {} is the {}</gameUserPosition>
+    <newSocket>Start creating New socket </newSocket>
+    <socketClosed>Socket has been already closed</socketClosed>
+    <newSocketSuccess>New Socket Successfully constructed</newSocketSuccess>
+    <requestGetParams>Request params {}</requestGetParams>
+    <jsonGotFromRequest>JSON from request: {}</jsonGotFromRequest>
+    <errorXML>Error while reading XML</errorXML>
+    <startXML>Start Document</startXML>
+    <endXML>End document</endXML>
+    <className>Class name: {}</className>
+    <aEqualB>{} = {}</aEqualB>
+    <resourceWasParsed>Resource {} was parsed</resourceWasParsed>
+</class>

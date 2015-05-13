@@ -1,0 +1,20 @@
+<class type='resource.Messages'>
+    <adminPage>Admin page</adminPage>
+    <notFound>404: Not Found.</notFound>
+    <wrongParamAction>Wrong 'action'</wrongParamAction>
+    <notAuthorised>Not Authorised</notAuthorised>
+    <logInStatus>Log In:</logInStatus>
+    <alreadyLoggedIn>You has already Logged In</alreadyLoggedIn>
+    <block>Authorization and signing up is blocked</block>
+    <wrongPasOrLogin>Wrong password or login</wrongPasOrLogin>
+    <fillAllTheGaps>Fill all the gaps, please:</fillAllTheGaps>
+    <logOutFirst>You have to logout before signing up.</logOutFirst>
+    <exist>Such user already exists</exist>
+    <wrongSignUpData>Wrong sign Up data</wrongSignUpData>
+    <wrongLimit>WrongLimit</wrongLimit>
+    <askToSignIn>You haven't signed up yet. Please, do it.</askToSignIn>
+    <JSONStatusIncrement>increment</JSONStatusIncrement>
+    <JSONStatusFinish>finish</JSONStatusFinish>
+    <JSONStatusResult>result</JSONStatusResult>
+    <JSONStatusStart>start</JSONStatusStart>
+</class>
