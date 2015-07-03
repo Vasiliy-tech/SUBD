@@ -383,16 +383,19 @@ public class MySqlConnect {
         Statement statement = getStatement();
 
         ResultSet resultSet = executeSelect(query, statement);
+        String email = null;
         try {
             if (resultSet != null && resultSet.next()) {
-                return resultSet.getString("email");
+                email =  resultSet.getString("email");
             }
         } catch (Exception e) {
             logger.error(e);
             e.printStackTrace();
+        } finally {
+            closeExecution(resultSet, statement);
         }
         closeExecution(resultSet, statement);
-        return null;
+        return email;
     }
 
 
