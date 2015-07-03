@@ -35,10 +35,13 @@ public class UserUnfollowServlet extends HttpServlet {
         JSONObject req = getJSONFromRequest(request, "UserFollow");
 
         String email = (String) req.get("follower");
+        long followee_id = mySqlServer.getUserIdByEmail((String)req.get("followee"));
+        long follower_id = mySqlServer.getUserIdByEmail(email);
 
         String query = "delete from follow where " +
-                "followee_id = (select id from users where email = '" + req.get("followee") + "') and " +
-                "follower_id = (select id from users where email = '" + email + "');";
+                "followee_id = " + followee_id + " and " +
+                "follower_id = " + follower_id + ";";
+
         int result = mySqlServer.executeUpdate(query);
         logger.info(resultUpdate(), result);
         short status = ok;

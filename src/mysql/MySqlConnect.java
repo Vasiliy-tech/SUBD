@@ -438,7 +438,9 @@ public class MySqlConnect {
             if (temp.equals("")) {
                 data.put("parent", null);
             }else {
-                data.put("parent", Integer.parseInt(temp.substring(temp.length() - 3)));
+                int indexLast = temp.lastIndexOf("_");
+                data.put("parent", Integer.parseInt(temp.substring(indexLast + 1)));
+            // change
             }
             if (thread) {
                 data.put("thread", getThreadDetailsById(resultSet.getInt("thread"), false, false));

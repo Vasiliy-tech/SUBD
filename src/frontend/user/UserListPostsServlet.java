@@ -42,8 +42,9 @@ public class UserListPostsServlet extends HttpServlet {
         String date = request.getParameter("since");
         String limit = request.getParameter("limit");
         String asc = request.getParameter("order");
-        String query = "select post.id from post join (select id from users where email = '" + request.getParameter("user") + "') as u " +
-                "on u.id = post.author_id where 1 > 0 " +
+        long userId = mySqlServer.getUserIdByEmail(request.getParameter("user"));
+        String query = "select post.id from post " +
+                "where forum_id = forum_id and author_id = " + userId + " " +
                 (date != null ? ("and date_of_creating > '" + date + "' ") : "") +
                 "order by date_of_creating " +
                 (asc == null ? ("desc ") : asc + " ") +
