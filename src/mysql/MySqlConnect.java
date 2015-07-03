@@ -468,7 +468,19 @@ public class MySqlConnect {
                 ResultSet forumResultSet;
                 Statement forumStatement = getStatement();
                 forumResultSet = executeSelect(queryForum, forumStatement);
-                data.put("forum", forumResultSet.getString("short_name"));
+
+                try {
+                    if (forumResultSet.next())
+                        data.put("forum", forumResultSet.getString("short_name"));
+                    else {
+                        data.put("forum", null);
+                    }
+                } catch (Exception e) {
+                    data.put("forum", null);
+                    e.printStackTrace();
+                    logger.error(e);
+                    logger.error(query);
+                }
             }
             data.put("id", resultSet.getInt("id"));
             data.put("isApproved", resultSet.getBoolean("isApproved"));
