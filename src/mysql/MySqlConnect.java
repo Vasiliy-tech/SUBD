@@ -376,7 +376,7 @@ public class MySqlConnect {
     }
 
     public String getEmailById(int id) {
-        String query = "select email from users where id = " + id + ";";
+        String query = "select email use index (id__email) from users where id = " + id + ";";
         Statement statement = getStatement();
 
         ResultSet resultSet = executeSelect(query, statement);
@@ -452,8 +452,7 @@ public class MySqlConnect {
 
         ResultSet resultSet;
         Statement statement = getStatement();
-
-        String query = "select id, date_of_creating as date, likes, dislikes, isAnonymous, isApproved, isDeleted, isEdited, isSpam, isHighlighted, message, parent, thread " +
+        String query = "select id, author_id, forum_id, date_of_creating as date, likes, dislikes, isApproved, isDeleted, isEdited, isSpam, isHighlighted, message, parent, thread " +
                 "from post " +
                 "where post.id = " + id + ";";
 
@@ -465,7 +464,7 @@ public class MySqlConnect {
             if (forum) {
                 data.put("forum", getForumDetailsById(resultSet.getInt("forum_id"), null));
             } else {
-                String queryForum = "select short_name from forum where id = " + resultSet.getInt("forum_id");
+                String queryForum = "select short_name from forum where id = " + resultSet.getInt("forum_id") + ";";
                 ResultSet forumResultSet;
                 Statement forumStatement = getStatement();
                 forumResultSet = executeSelect(queryForum, forumStatement);
