@@ -109,6 +109,15 @@ public class PostCreateServlet extends HttpServlet {
                             .append(";");
                     result = mySqlServer.executeUpdate(query.toString());
                     logger.info(LoggerHelper.resultUpdate(), result);
+
+                    if (result == 1) {
+                        query.delete(0, query.length());
+                        query.append("update thread set amountOfPost = amountOfPost + 1 where id = ")
+                                .append(thread)
+                                .append(';');
+                        result = mySqlServer.executeUpdate(query.toString());
+
+                    }
                     query.delete(0, query.length());
                     query.append("select post.id ")
                             .append("from post ")

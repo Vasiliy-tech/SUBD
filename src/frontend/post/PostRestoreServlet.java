@@ -47,6 +47,11 @@ public class PostRestoreServlet extends HttpServlet {
 
         if (status == ErrorMessages.ok) {
             query = "update post set isDeleted = 0 where id = " + postId + ";";
+            if (result == 1) {
+                query = "update thread set amountOfPost = amountOfPost + 1 where id = (select thread from post where id = " + postId + ");";
+                result = mySqlServer.executeUpdate(query.toString());
+
+            }
             result = mySqlServer.executeUpdate(query);
             logger.info(LoggerHelper.resultUpdate(), result);
         }

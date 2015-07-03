@@ -354,15 +354,13 @@ public class MySqlConnect {
         ResultSet resultSetCount;
         Statement statementCount = getStatement();
 
-        String query = "select count(1) as amount from post where thread = " + id + " and isDeleted = 0;";
-
-        resultSetCount = executeSelect(query, statementCount);
+        String query;
 
         ResultSet resultSet = null;
         Statement statement = getStatement();
 
 
-        query = "select thread.date_of_creating as date, forum.short_name as forum, short_name, thread.id, isClosed, isDeleted, message, slug, title, email as user, likes, dislikes " +
+        query = "select thread.date_of_creating as date, forum.short_name as forum, short_name, thread.id, isClosed, isDeleted, message, slug, title, email as user, likes, dislikes, amountOfPost " +
                 "from thread " +
                 "join users on founder_id = users.id " +
                 "join forum on forum.id = forum_id " +
@@ -371,7 +369,7 @@ public class MySqlConnect {
         resultSet = executeSelect(query, statement);
         JSONObject data = new JSONObject();
 
-        if (resultSet.next() && resultSetCount.next()) {
+        if (resultSet.next()) {
             data.put("date", resultSet.getString("date").substring(0, 19));
             data.put("dislikes", resultSet.getInt("dislikes"));
             if (forum) {
@@ -385,7 +383,7 @@ public class MySqlConnect {
             data.put("likes", resultSet.getInt("likes"));
             data.put("message", resultSet.getString("message"));
             data.put("points", resultSet.getInt("likes") - resultSet.getInt("dislikes") );
-            data.put("posts", resultSetCount.getInt("amount"));
+            data.put("posts", resultSet.getInt("amountOfPost"));
             data.put("slug", resultSet.getString("slug"));
             data.put("title", resultSet.getString("title"));
             if (user) {

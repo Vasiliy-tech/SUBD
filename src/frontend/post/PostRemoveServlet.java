@@ -28,7 +28,7 @@ public class PostRemoveServlet extends HttpServlet {
     public void doPost(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         logger.info(LoggerHelper.start());
-        JSONObject req = getJSONFromRequest(request, "PostCreate");
+        JSONObject req = getJSONFromRequest(request, "PostRemove");
 
         short status = ErrorMessages.ok;
         String message = "";
@@ -48,6 +48,11 @@ public class PostRemoveServlet extends HttpServlet {
             query = "update post set isDeleted = 1 where id = " + postId + ";";
             result = mySqlServer.executeUpdate(query);
             logger.info(LoggerHelper.resultUpdate(), result);
+
+            if (result == 1) {
+                query = "update thread set amountOfPost = amountOfPost - 1 where id = (select thread from post where id = " + postId + ");";
+                result = mySqlServer.executeUpdate(query.toString());
+            }
         }
         if (result == 0) {
             status = ErrorMessages.noRequestedObject;
