@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import static main.JsonInterpreterFromRequest.getJSONFromRequest;
 
@@ -56,14 +58,14 @@ public class PostCreateServlet extends HttpServlet {
         }
         long parentId = 0;
         if (req.containsKey("parent")) {
-            parentId = req.get("parent") == null ? 0 : (long)req.get("parent") ;
+            parentId = req.get("parent") == null ? 0 : (long) req.get("parent");
         }
 
-        String shortName = (String)req.get("forum");
-        String email = (String)req.get("user");
-        String messagePost = (String)req.get("message");
-        long thread =  (long)req.get("thread");
-        String date = (String)req.get("date");
+        String shortName = (String) req.get("forum");
+        String email = (String) req.get("user");
+        String messagePost = (String) req.get("message");
+        long thread = (long) req.get("thread");
+        String date = (String) req.get("date");
         int result;
 
         String matPath = "";
@@ -106,12 +108,36 @@ public class PostCreateServlet extends HttpServlet {
                             .append(";");
                     result = mySqlServer.executeUpdate(query.toString());
                     logger.info(LoggerHelper.resultUpdate(), result);
-                    if (result != -1) {
+                    query.delete(0, query.length());
+                    query.append("select post.id ")
+                            .append("from post ")
+                            .append("where forum_id = forum_id and author_id = ")
+                            .append(authorId)
+                            .append(" and ")
+                            .append("post.date_of_creating = '")
+                            .append(date)
+                            .append("';");
+                    int id = -1;
+                    ResultSet resultSet = null;
+                    Statement statement = null;
+                    try {
+                        statement = mySqlServer.getStatement();
+                        resultSet = mySqlServer.executeSelect(query.toString(), statement);
+                        if (resultSet != null && resultSet.next()) {
+                            id = resultSet.getInt(1);
+                        }
+                    } catch (SQLException e) {
+                        logger.error(e);
+                        e.printStackTrace();
+                    } finally {
+                        mySqlServer.closeExecution(resultSet, statement);
+                    }
+                    if (id != 1) {
+
                         data = new JSONObject();
-                        data.put("date", data);
+                        data.put("date", date);
                         data.put("forum", forumName);
-                        data.put("forum", forumName);
-                        data.put("id", result);
+                        data.put("id", id);
                         data.put("isApproved", isApproved);
                         data.put("isHighlighted", isHighlighted);
                         data.put("isEdited", isEdited);
@@ -120,13 +146,17 @@ public class PostCreateServlet extends HttpServlet {
                         data.put("message", messagePost);
                         if (matPath.equals("")) {
                             data.put("parent", null);
-                         }else {
-                            // TODO коссссяк
-                            data.put("parent", Integer.parseInt(matPath.substring(matPath.length() - 3)));
-                                }
+                        } else {
+                            int indexLast = matPath.lastIndexOf("_");
+
+                            data.put("parent", Integer.parseInt(matPath.substring(indexLast + 1)));
+                        }
                         data.put("thread", thread);
                         data.put("user", email);
-                       }
+                    } else {
+                        status = ErrorMessages.noRequestedObject;
+                        message = "Error while PostCreate";
+
                     }
                 } else {
                     status = ErrorMessages.noRequestedObject;
@@ -139,6 +169,7 @@ public class PostCreateServlet extends HttpServlet {
                 logger.info(LoggerHelper.noUserOrForum());
             }
 
+        }
         try {
             createResponse(response, status, message, data);
         } catch (SQLException e) {
@@ -149,16 +180,13 @@ public class PostCreateServlet extends HttpServlet {
         logger.info(LoggerHelper.finish());
     }
 
+
     private void createResponse(HttpServletResponse response, short status, String message, JSONObject data) throws IOException, SQLException {
         CommonHelper.setResponse(response);
         JSONObject obj = new JSONObject();
         if (status != ErrorMessages.ok) {
+            data = new JSONObject();
             data.put("error", message);
-        } else {
-            if (data == null) {
-                status = ErrorMessages.noRequestedObject;
-                data.put("error", "Error while PostCreate");
-            }
         }
         obj.put("response", data);
         obj.put("code", status);

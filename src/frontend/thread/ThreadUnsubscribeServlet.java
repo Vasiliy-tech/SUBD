@@ -58,7 +58,7 @@ public class ThreadUnsubscribeServlet extends HttpServlet {
         }
 
         if (status == ErrorMessages.ok) {
-            query = "delete subscribtion from subscribtion where thread_id = " + threadId + " and user_id = " + userId + ";";
+            query = "delete subscribtion from subscribtion where user_id = " + userId + " and thread_id = " + threadId + ";";
             result = mySqlServer.executeUpdate(query);
             logger.info(resultUpdate(), result);
             if (result == 0) {

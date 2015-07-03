@@ -10,7 +10,8 @@ create table `users` (
 `name` char(64) not null,
 `isAnonymous` tinyint unsigned not null default '0',
 `about` TEXT,
-primary key (`id`)
+primary key (`id`),
+key (`email`)
 ) engine=InnoDB default charset=cp1251;
 
 create table `follow` (
@@ -28,6 +29,7 @@ create table `forum` (
 `short_name` varchar(255) not null unique,
 `date_of_creating` TIMESTAMP default NOW(),
 primary key (`id`),
+key (`shor_name'),
 foreign key(`founder_id`) references `users`(id)
 ) engine=InnoDB default charset=cp1251;
 
@@ -43,9 +45,10 @@ create table `thread` (
 `date_of_creating` TIMESTAMP default NOW(),
 `likes` mediumint default 0,
 `dislikes` mediumint default 0,
-primary key (`forum_id`, `slug`),
+primary key (`id`),
+key (`forum_id`, `date_of_creating`),
 foreign key(`founder_id`) references `users`(id),
-foreign key(`forum_id`) references `forum`(id)
+foreign key(`forum_id`, `date_of_creating`) references `forum`(id)
 ) engine=InnoDB default charset=cp1251;
 
 create table `post` (
@@ -64,6 +67,8 @@ create table `post` (
 `likes` mediumint default 0,
 `dislikes` mediumint default 0,
 primary key (`id`),
+key (`thread`, `date_of_creating`),
+key (`forum_id`, `author_id`, `date_of_creating`),
 foreign key(`author_id`) references `users`(id),
 foreign key(`forum_id`) references `forum`(id),
 foreign key(`thread`) references `thread`(id)
@@ -73,5 +78,6 @@ create table `subscribtion` (
 `user_id` mediumint unsigned not null,
 `thread_id` mediumint unsigned not null,
 primary key (`user_id`, `thread_id`),
+key (`user_id`, `thread_id`),
 foreign key(`user_id`) references `users`(id)
 ) engine=InnoDB default charset=cp1251;
