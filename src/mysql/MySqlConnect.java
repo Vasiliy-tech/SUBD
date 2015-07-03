@@ -326,7 +326,7 @@ public class MySqlConnect {
         // todo убрать join
         String query = "select forum.id, founder_id, forum.name, short_name, email from forum " +
                 "join users on founder_id = users.id " +
-                "where is = '" + id +"';";
+                "where id = '" + id +"';";
         resultSet = executeSelect(query, statement);
 
         JSONObject data = new JSONObject();
