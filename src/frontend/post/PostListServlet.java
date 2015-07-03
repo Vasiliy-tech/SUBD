@@ -61,7 +61,7 @@ public class PostListServlet extends HttpServlet {
                 int forumId = mySqlServer.getForumIdByShortName(forum);
                 if (forumId > 0) {
                     query.delete(0, query.length());
-                    query.append("select id from post ")
+                    query.append("select id from post use index (forum_id__data)")
                             .append("where forum_id = ")
                             .append(forumId).append(" ");
                     CommonHelper.appendDateAndAscAndLimit(query, since, asc, limit);

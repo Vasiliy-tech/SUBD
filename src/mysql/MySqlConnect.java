@@ -55,6 +55,7 @@ public class MySqlConnect {
             logger.info(LoggerHelper.query(), query);
             resultSet = statement.executeQuery(query);
         } catch (SQLException ex) {
+            logger.error("query:\n{}", query);
             logger.error(ex);
         }
         return resultSet;
@@ -126,7 +127,7 @@ public class MySqlConnect {
             if(resultSet1.next()) {
                 parent = resultSet1.getString("parent");
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             logger.error(e);
             e.printStackTrace();
         }
@@ -322,6 +323,7 @@ public class MySqlConnect {
     public JSONObject getForumDetails(String short_name, String related) throws IOException, SQLException {
         ResultSet resultSet;
         Statement statement = getStatement();
+        //TODO: убрать join
 
         String query = "select forum.id, founder_id, forum.name, short_name, email from forum " +
                 "join users on founder_id = users.id " +
@@ -352,7 +354,7 @@ public class MySqlConnect {
         ResultSet resultSetCount;
         Statement statementCount = getStatement();
 
-        String query = "select count(*) as amount from post where thread = " + id + " and isDeleted = 0;";
+        String query = "select count(1) as amount from post where thread = " + id + " and isDeleted = 0;";
 
         resultSetCount = executeSelect(query, statementCount);
 

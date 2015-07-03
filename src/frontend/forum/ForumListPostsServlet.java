@@ -56,7 +56,7 @@ public class ForumListPostsServlet extends HttpServlet {
         // TODO index forum: short_name, id || post: forum_id, date_of_creating
         if (status == ErrorMessages.ok) {
             query
-                    .append("select id from post ")
+                    .append("select id from post use index (forum_id__data)")
                     .append("where forum_id = '")
                     .append(forumId)
                     .append("' ");

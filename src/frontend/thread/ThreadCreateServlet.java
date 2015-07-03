@@ -64,17 +64,25 @@ public class ThreadCreateServlet extends HttpServlet {
                 .append(isDeleted ? ", isDeleted = 1;" : ";");
         result = mySqlServer.executeUpdate(query.toString());
         logger.info(resultUpdate(), result);
-        ResultSet resultSet;
+        ResultSet resultSet = null;
         Statement statement = mySqlServer.getStatement();
-        query.delete(0, query.length());
-        query
-                .append("select thread.date_of_creating as date, forum.name as forum, thread.id, isClosed, isDeleted, message, slug, title, email as user ")
-                .append("from thread ")
-                .append("join users on founder_id = users.id ")
-                .append("join forum on forum.id = forum_id ")
-                .append("where slug = '").append(slug).append("' and ")
-                .append("forum.short_name = '").append(short_name).append("';");
-        resultSet = mySqlServer.executeSelect(query.toString(), statement);
+
+        if (result != 0) {
+            query.delete(0, query.length());
+            query
+                    .append("select thread.date_of_creating as date, forum.name as forum, thread.id, isClosed, isDeleted, message, slug, title, email as user ")
+                    .append("from thread ")
+                    .append("join users on founder_id = users.id ")
+                    .append("join forum on forum.id = forum_id ")
+                    .append("where slug = '").append(slug).append("' and ")
+                    .append("forum.short_name = '").append(short_name).append("';");
+            resultSet = mySqlServer.executeSelect(query.toString(), statement);
+
+        } else {
+            message = "Such tread already exists";
+            status = ErrorMessages.unknownError;
+
+        }
         try {
             createResponse(response, status, message, resultSet);
         } catch (SQLException e) {
