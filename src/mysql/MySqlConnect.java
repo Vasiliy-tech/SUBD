@@ -329,7 +329,7 @@ public class MySqlConnect {
         // todo убрать join
         String query = "select forum.id, founder_id, forum.name, short_name, email from forum " +
                 "join users on founder_id = users.id " +
-                "where id = '" + id +"';";
+                "where forum.id = '" + id +"';";
         resultSet = executeSelect(query, statement);
 
         JSONObject data = new JSONObject();
@@ -379,7 +379,7 @@ public class MySqlConnect {
     }
 
     public String getEmailById(int id) {
-        String query = "select email use index (id__email) from users where id = " + id + ";";
+        String query = "select email from users use index (id__email) where id = " + id + ";";
         Statement statement = getStatement();
 
         ResultSet resultSet = executeSelect(query, statement);
