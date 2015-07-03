@@ -320,6 +320,33 @@ public class MySqlConnect {
 
 
 
+    public JSONObject getForumDetailsById(int id, String related) throws IOException, SQLException {
+        ResultSet resultSet;
+        Statement statement = getStatement();
+        // todo убрать join
+        String query = "select forum.id, founder_id, forum.name, short_name, email from forum " +
+                "join users on founder_id = users.id " +
+                "where is = '" + id +"';";
+        resultSet = executeSelect(query, statement);
+
+        JSONObject data = new JSONObject();
+        if (resultSet.next()) {
+            if (related != null) {
+                data.put("user", getUserDetail(resultSet.getInt("founder_id")));
+            } else {
+                data.put("user", resultSet.getString("email"));
+            }
+            data.put("name", resultSet.getString("name"));
+            data.put("id", resultSet.getString("id"));
+            data.put("short_name", resultSet.getString("short_name"));
+            logger.info(LoggerHelper.forumDetailJSON(), data.toString());
+        } else {
+            data = null;
+        }
+        closeExecution(resultSet, statement);
+        return data;
+    }
+
     public JSONObject getForumDetails(String short_name, String related) throws IOException, SQLException {
         ResultSet resultSet;
         Statement statement = getStatement();
@@ -346,6 +373,22 @@ public class MySqlConnect {
         }
         closeExecution(resultSet, statement);
         return data;
+    }
+
+    public String getEmailById(int id) {
+        String query = "select email from users where id = " + id + ";";
+        Statement statement = getStatement();
+
+        ResultSet resultSet = executeSelect(query, statement);
+        try {
+            if (resultSet != null && resultSet.next()) {
+                return resultSet.getString("email");
+            }
+        } catch (Exception e) {
+            logger.error(e);
+            e.printStackTrace();
+        }
+        return null;
     }
 
 
@@ -403,15 +446,15 @@ public class MySqlConnect {
     }
 
 
+
+
     public JSONObject getPostDetails(int id, boolean user, boolean thread, boolean forum) throws IOException, SQLException {
 
         ResultSet resultSet;
         Statement statement = getStatement();
 
-        String query = "select post.id, post.date_of_creating as date, post.likes, post.dislikes, forum.short_name as forum, short_name, isAnonymous, isApproved, isDeleted, isEdited, isSpam, isHighlighted, message, parent, thread, email as user " +
+        String query = "select id, date_of_creating as date, likes, dislikes, isAnonymous, isApproved, isDeleted, isEdited, isSpam, isHighlighted, message, parent, thread " +
                 "from post " +
-                "join forum on forum.id = forum_id " +
-                "join users on users.id = author_id " +
                 "where post.id = " + id + ";";
 
         resultSet = executeSelect(query, statement);
@@ -420,9 +463,13 @@ public class MySqlConnect {
         if (resultSet.next()) {
             data.put("date", resultSet.getString("date").substring(0, 19));
             if (forum) {
-                data.put("forum", getForumDetails(resultSet.getString("short_name"), null));
+                data.put("forum", getForumDetailsById(resultSet.getInt("forum_id"), null));
             } else {
-                data.put("forum", resultSet.getString("forum"));
+                String queryForum = "select short_name from forum where id = " + resultSet.getInt("forum_id");
+                ResultSet forumResultSet;
+                Statement forumStatement = getStatement();
+                forumResultSet = executeSelect(queryForum, forumStatement);
+                data.put("forum", forumResultSet.getString("short_name"));
             }
             data.put("id", resultSet.getInt("id"));
             data.put("isApproved", resultSet.getBoolean("isApproved"));
@@ -449,9 +496,9 @@ public class MySqlConnect {
             }
 
             if (user) {
-                data.put("user", getUserDetail(resultSet.getString("user")));
+                data.put("user", getUserDetail(resultSet.getInt("author_id")));
             } else {
-                data.put("user", resultSet.getString("user"));
+                data.put("user", getEmailById(resultSet.getInt("author_id")));
             }
             logger.info(LoggerHelper.postDetailJSON(), data.toString());
         } else {
