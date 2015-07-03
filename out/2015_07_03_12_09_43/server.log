@@ -1,0 +1,3 @@
+[07-03 12:09:43,334, 1337] main.Main Порт не задан.
+[07-03 12:09:43,337, 1340] main.Main Starting at port: 8080
+[07-03 12:09:43,987, 1990] mysql.MySqlConnect Connected to jdbc:mysql://localhost:3306/SMDB

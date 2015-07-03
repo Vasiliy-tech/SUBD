@@ -1,8 +1,6 @@
 package main;
 
-import frontend.AdminServlet;
 import frontend.ServiceClearServlet;
-import frontend.ServiceShutDownServlet;
 import frontend.ServiceStatusServlet;
 import frontend.forum.*;
 import frontend.post.*;
@@ -27,10 +25,8 @@ public class AppServer {
         server = new Server(port);
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
-        String entity = "service";
-        addServletToContext(context, new AdminServlet(), entity, "admin");
+        String entity;
         context.addServlet(new ServletHolder(new ServiceClearServlet(mySqlServer)), "/db/api/clear/");
-        context.addServlet(new ServletHolder(new ServiceShutDownServlet()), "/shutDown");
         context.addServlet(new ServletHolder(new ServiceStatusServlet(mySqlServer)), "/db/api/status/");
 
         entity = "user";
