@@ -21,12 +21,13 @@ public class UserDetailsServlet extends HttpServlet {
     private MySqlConnect mySqlServer;
 
     public UserDetailsServlet(MySqlConnect mySqlServer) {
-        this.mySqlServer = mySqlServer;
+        //this.mySqlServer = mySqlServer;
     }
 
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         logger.info(LoggerHelper.start());
+        mySqlServer = new MySqlConnect(true);
         String email = request.getParameter("user");
 
         short status = ErrorMessages.ok;
@@ -38,6 +39,7 @@ public class UserDetailsServlet extends HttpServlet {
             logger.error(e);
             e.printStackTrace();
         }
+        mySqlServer.close();
         logger.info(LoggerHelper.finish());
     }
 

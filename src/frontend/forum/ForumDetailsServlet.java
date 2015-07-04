@@ -23,12 +23,13 @@ public class ForumDetailsServlet extends HttpServlet {
     private MySqlConnect mySqlServer;
 
     public ForumDetailsServlet(MySqlConnect mySqlServer) {
-        this.mySqlServer = mySqlServer;
+        //this.mySqlServer = mySqlServer;
     }
 
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         logger.info(LoggerHelper.start());
+        mySqlServer = new MySqlConnect(true);
 
         String forum = request.getParameter("forum");
         String related = request.getParameter("related");
@@ -41,6 +42,7 @@ public class ForumDetailsServlet extends HttpServlet {
             e.printStackTrace();
         }
 
+        mySqlServer.close();
         logger.info(LoggerHelper.finish());
     }
 

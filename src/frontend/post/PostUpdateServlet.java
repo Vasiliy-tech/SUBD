@@ -22,12 +22,13 @@ public class PostUpdateServlet extends HttpServlet {
     private MySqlConnect mySqlServer;
 
     public PostUpdateServlet(MySqlConnect mySqlServer) {
-        this.mySqlServer = mySqlServer;
+        //this.mySqlServer = mySqlServer;
     }
 
     public void doPost(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         logger.info(LoggerHelper.start());
+        mySqlServer = new MySqlConnect(true);
         JSONObject req = getJSONFromRequest(request, "PostUpdate");
 
         short status = ErrorMessages.ok;
@@ -64,6 +65,7 @@ public class PostUpdateServlet extends HttpServlet {
             logger.error(e);
             e.printStackTrace();
         }
+        mySqlServer.close();
         logger.info(LoggerHelper.finish());
     }
 

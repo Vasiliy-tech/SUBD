@@ -26,12 +26,13 @@ public class ThreadUnsubscribeServlet extends HttpServlet {
     private MySqlConnect mySqlServer;
 
     public ThreadUnsubscribeServlet(MySqlConnect mySqlServer) {
-        this.mySqlServer = mySqlServer;
+        //this.mySqlServer = mySqlServer;
     }
 
     public void doPost(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         logger.info(LoggerHelper.start());
+        mySqlServer = new MySqlConnect(true);
 
         JSONObject req = getJSONFromRequest(request, "ThreadUnsubscribeServlet");
 
@@ -39,7 +40,7 @@ public class ThreadUnsubscribeServlet extends HttpServlet {
         String message = "";
 
         long threadId= 0;
-        String email = (String)req.get("user");
+        String email = (String) req.get("user");
 
         if (req.containsKey("thread") && email != null) {
             threadId = (long)req.get("thread");
@@ -74,6 +75,7 @@ public class ThreadUnsubscribeServlet extends HttpServlet {
             logger.error(e);
             e.printStackTrace();
         }
+        mySqlServer.close();
 
         logger.info(LoggerHelper.finish());
     }

@@ -28,12 +28,13 @@ public class ForumListPostsServlet extends HttpServlet {
     private MySqlConnect mySqlServer;
 
     public ForumListPostsServlet(MySqlConnect mySqlServer) {
-        this.mySqlServer = mySqlServer;
+        //this.mySqlServer = mySqlServer;
     }
 
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         logger.info(LoggerHelper.start());
+        mySqlServer = new MySqlConnect(true);
 
         Map<String, String[]> paramMap = request.getParameterMap();
         String forum = paramMap.containsKey("forum") ? paramMap.get("forum")[0] : null;
@@ -53,10 +54,9 @@ public class ForumListPostsServlet extends HttpServlet {
         ResultSet resultSet = null;
         Statement statement = mySqlServer.getStatement();
         int forumId = mySqlServer.getForumIdByShortName(forum);
-        // TODO index forum: short_name, id || post: forum_id, date_of_creating
+
         if (status == ErrorMessages.ok) {
-            query
-                    .append("select id from post use index (forum_id__data)")
+            query.append("select id from post use index (forum_id__data)")
                     .append("where forum_id = '")
                     .append(forumId)
                     .append("' ");
@@ -72,6 +72,7 @@ public class ForumListPostsServlet extends HttpServlet {
         }
 
         mySqlServer.closeExecution(resultSet, statement);
+        mySqlServer.close();
 
         logger.info(LoggerHelper.finish());
     }

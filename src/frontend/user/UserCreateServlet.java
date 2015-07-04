@@ -28,12 +28,13 @@ public class UserCreateServlet extends HttpServlet {
     private MySqlConnect mySqlServer;
 
     public UserCreateServlet(MySqlConnect mySqlServer) {
-        this.mySqlServer = mySqlServer;
+        //this.mySqlServer = mySqlServer;
     }
 
     public void doPost(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         logger.info(LoggerHelper.start());
+        mySqlServer = new MySqlConnect(true);
         JSONObject req = getJSONFromRequest(request, "UserCreateServlet");
         boolean isAnonymous = false;
 
@@ -78,6 +79,7 @@ public class UserCreateServlet extends HttpServlet {
             logger.error(e);
             e.printStackTrace();
         }
+        mySqlServer.close();
         mySqlServer.closeExecution(resultSet, statement);
         logger.info(LoggerHelper.finish());
     }

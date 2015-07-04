@@ -26,12 +26,13 @@ public class UserListServlet extends HttpServlet {
     private MySqlConnect mySqlServer;
 
     public UserListServlet(MySqlConnect mySqlServer) {
-        this.mySqlServer = mySqlServer;
+        //this.mySqlServer = mySqlServer;
     }
 
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         logger.info(LoggerHelper.start());
+        mySqlServer = new MySqlConnect(true);
         short status = ErrorMessages.ok;
         String message = "";
         ResultSet resultSet = null;
@@ -45,6 +46,7 @@ public class UserListServlet extends HttpServlet {
             e.printStackTrace();
         }
         mySqlServer.closeExecution(resultSet, statement);
+        mySqlServer.close();
         logger.info(LoggerHelper.finish());
     }
 

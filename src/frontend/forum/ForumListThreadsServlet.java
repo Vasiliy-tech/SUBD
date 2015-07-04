@@ -28,12 +28,13 @@ public class ForumListThreadsServlet extends HttpServlet {
     private MySqlConnect mySqlServer;
 
     public ForumListThreadsServlet(MySqlConnect mySqlServer) {
-        this.mySqlServer = mySqlServer;
+        //this.mySqlServer = mySqlServer;
     }
 
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         logger.info(LoggerHelper.start());
+        mySqlServer = new MySqlConnect(true);
 
         Map<String, String[]> paramMap = request.getParameterMap();
         String forum = paramMap.containsKey("forum") ? paramMap.get("forum")[0] : null;
@@ -66,6 +67,7 @@ public class ForumListThreadsServlet extends HttpServlet {
             e.printStackTrace();
         }
         mySqlServer.closeExecution(resultSet, statement);
+        mySqlServer.close();
 
         logger.info(LoggerHelper.finish());
     }

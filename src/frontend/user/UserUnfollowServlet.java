@@ -25,12 +25,13 @@ public class UserUnfollowServlet extends HttpServlet {
     private MySqlConnect mySqlServer;
 
     public UserUnfollowServlet(MySqlConnect mySqlServer) {
-        this.mySqlServer = mySqlServer;
+        //this.mySqlServer = mySqlServer;
     }
 
     public void doPost(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         logger.info(start());
+        mySqlServer = new MySqlConnect(true);
 
         JSONObject req = getJSONFromRequest(request, "UserFollow");
 
@@ -54,6 +55,7 @@ public class UserUnfollowServlet extends HttpServlet {
             logger.error(e);
             e.printStackTrace();
         }
+        mySqlServer.close();
         logger.info(finish());
     }
 

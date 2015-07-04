@@ -24,19 +24,20 @@ public class ThreadOpenServlet extends HttpServlet {
     private MySqlConnect mySqlServer;
 
     public ThreadOpenServlet(MySqlConnect mySqlServer) {
-        this.mySqlServer = mySqlServer;
+        //this.mySqlServer = mySqlServer;
     }
 
     public void doPost(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         logger.info(LoggerHelper.start());
+        mySqlServer = new MySqlConnect(true);
 
         JSONObject req = getJSONFromRequest(request, "PostCreate");
 
         short status = ErrorMessages.ok;
         String message = "";
 
-        long threadId= 0;
+        long threadId = 0;
         if (req.containsKey("thread")) {
             threadId = (long)req.get("thread");
         } else {
@@ -63,6 +64,7 @@ public class ThreadOpenServlet extends HttpServlet {
             logger.error(e);
             e.printStackTrace();
         }
+        mySqlServer.close();
         logger.info(LoggerHelper.finish());
     }
 

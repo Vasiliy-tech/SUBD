@@ -25,17 +25,18 @@ public class UserFollowServlet extends HttpServlet {
     private MySqlConnect mySqlServer;
 
     public UserFollowServlet(MySqlConnect mySqlServer) {
-        this.mySqlServer = mySqlServer;
+        //this.mySqlServer = mySqlServer;
     }
 
     public void doPost(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         logger.info(start());
+        mySqlServer = new MySqlConnect(true);
         JSONObject req = getJSONFromRequest(request, "UserFollow");
 
         String email = (String) req.get("follower");
 
-        int followeeId = mySqlServer.getUserIdByEmail((String)req.get("followee"));
+        int followeeId = mySqlServer.getUserIdByEmail((String) req.get("followee"));
         int emailId = mySqlServer.getUserIdByEmail(email);
 
         String query = "insert into follow set " +
@@ -52,6 +53,7 @@ public class UserFollowServlet extends HttpServlet {
             logger.error(e);
             e.printStackTrace();
         }
+        mySqlServer.close();
         logger.info(finish());
     }
 

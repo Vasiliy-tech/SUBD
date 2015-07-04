@@ -24,12 +24,13 @@ public class ForumListUsersServlet extends HttpServlet {
     private MySqlConnect mySqlServer;
 
     public ForumListUsersServlet(MySqlConnect mySqlServer) {
-        this.mySqlServer = mySqlServer;
+        //this.mySqlServer = mySqlServer;
     }
 
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         logger.info(LoggerHelper.start());
+        mySqlServer = new MySqlConnect(true);
         logger.info(request.getParameterMap().toString());
 
         String forum = request.getParameter("forum");
@@ -74,6 +75,7 @@ public class ForumListUsersServlet extends HttpServlet {
         }
 
         mySqlServer.closeExecution(resultSet, statement);
+        mySqlServer.close();
 
         logger.info(LoggerHelper.finish());
     }

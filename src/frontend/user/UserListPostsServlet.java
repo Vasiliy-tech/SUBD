@@ -28,12 +28,13 @@ public class UserListPostsServlet extends HttpServlet {
     private MySqlConnect mySqlServer;
 
     public UserListPostsServlet(MySqlConnect mySqlServer) {
-        this.mySqlServer = mySqlServer;
+        //this.mySqlServer = mySqlServer;
     }
 
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         logger.info(start());
+        mySqlServer = new MySqlConnect(true);
 
         short status = ok;
         String message = "";
@@ -59,6 +60,7 @@ public class UserListPostsServlet extends HttpServlet {
             e.printStackTrace();
         }
         mySqlServer.closeExecution(resultSet, statement);
+        mySqlServer.close();
         logger.info(finish());
     }
 

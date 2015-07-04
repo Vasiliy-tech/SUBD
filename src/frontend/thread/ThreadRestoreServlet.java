@@ -26,12 +26,13 @@ public class ThreadRestoreServlet extends HttpServlet {
     private MySqlConnect mySqlServer;
 
     public ThreadRestoreServlet(MySqlConnect mySqlServer) {
-        this.mySqlServer = mySqlServer;
+        //this.mySqlServer = mySqlServer;
     }
 
     public void doPost(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         logger.info(LoggerHelper.start());
+        mySqlServer = new MySqlConnect(true);
 
         JSONObject req = getJSONFromRequest(request, "PostCreate");
 
@@ -69,6 +70,7 @@ public class ThreadRestoreServlet extends HttpServlet {
             logger.error(e);
             e.printStackTrace();
         }
+        mySqlServer.close();
         logger.info(LoggerHelper.finish());
     }
 

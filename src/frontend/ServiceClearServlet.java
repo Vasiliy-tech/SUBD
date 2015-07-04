@@ -19,12 +19,13 @@ public class ServiceClearServlet extends HttpServlet {
     private MySqlConnect mySqlServer;
 
     public ServiceClearServlet(MySqlConnect mySqlServer) {
-        this.mySqlServer = mySqlServer;
+        //this.mySqlServer = mySqlServer;
     }
 
     public void doPost(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         logger.info("Truncate All!");
+        mySqlServer = new MySqlConnect(true);
         mySqlServer.executeUpdate("truncate table subscribtion;");
         mySqlServer.executeUpdate("truncate table follow;");
         mySqlServer.executeUpdate("delete from post;");
@@ -36,6 +37,7 @@ public class ServiceClearServlet extends HttpServlet {
         } catch (SQLException e) {
             logger.info("Error while creating response for truncate");
         }
+        mySqlServer.close();
         logger.info(LoggerHelper.finish());
     }
 

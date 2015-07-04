@@ -16,21 +16,23 @@ import java.util.Properties;
 public class MySqlConnect {
     private static Logger logger = LogManager.getLogger(MySqlConnect.class.getName());
 
-    private static Connection connection;
+    private static ConnectionPool connectionPool = new ConnectionPool();
+    private Connection connection;
     //private PreparedStatement postDetailsPrepStatement = null;
 
     public MySqlConnect() {
         try {
-        DriverManager.registerDriver((Driver) Class.forName("com.mysql.jdbc.Driver").newInstance());
-        Properties properties = new Properties();
-        properties.setProperty("user","root");
-        properties.setProperty("password","smokey");
-        properties.setProperty("useUnicode","true");
-        properties.setProperty("characterEncoding","windows-1251");
 
+            DriverManager.registerDriver((Driver) Class.forName("com.mysql.jdbc.Driver").newInstance());
+            Properties properties=new Properties();
+            properties.setProperty("user","root");
+            properties.setProperty("password","smokey");
+            properties.setProperty("useUnicode","true");
+            properties.setProperty("characterEncoding","windows-1251");
 
-        connection = null;
-        String url = "jdbc:mysql://localhost:3306/SMDB";
+            String url = "jdbc:mysql://localhost:3306/SMDB";
+            connection = null;
+
             connection = DriverManager.getConnection(url, properties);
             logger.info(LoggerHelper.connection(), url);
             //String query = "select id, author_id, forum_id, date_of_creating as date, likes, dislikes, isApproved, isDeleted, isEdited, isSpam, isHighlighted, message, parent, thread from post where post.id = ?;";
@@ -38,6 +40,19 @@ public class MySqlConnect {
         } catch (Exception e) {
             e.printStackTrace();
             System.exit(-1);
+        }
+    }
+
+    public MySqlConnect(boolean withConnectionPool) {
+        this.connection = connectionPool.getConnection();
+    }
+
+    public void close() {
+        try {
+            connection.close();
+        } catch (Exception e) {
+            logger.error(e);
+            e.printStackTrace();
         }
     }
 
@@ -101,22 +116,6 @@ public class MySqlConnect {
         }
     }
 
-    public int executeCreate(String query) {
-        int id = -1;
-        try {
-            Statement statement = connection.createStatement();
-            logger.info(LoggerHelper.query(), query);
-            statement.executeUpdate(query);
-            ResultSet resultSet = statement.getGeneratedKeys();
-            if (resultSet != null && resultSet.next()) {
-               id = resultSet.getInt(1);
-            }
-            statement.close();
-            } catch (SQLException ex) {
-            logger.error(ex);
-             }
-        return id;
-        }
 
     public String getParentPathByParentId(long parentId) {
         ResultSet resultSet1;

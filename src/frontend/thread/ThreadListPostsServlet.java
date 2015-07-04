@@ -27,12 +27,13 @@ public class ThreadListPostsServlet extends HttpServlet {
     private MySqlConnect mySqlServer;
 
     public ThreadListPostsServlet(MySqlConnect mySqlServer) {
-        this.mySqlServer = mySqlServer;
+        //this.mySqlServer = mySqlServer;
     }
 
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         logger.info(LoggerHelper.start());
+        mySqlServer = new MySqlConnect(true);
 
         short status = ErrorMessages.ok;
         String message = "";
@@ -43,7 +44,6 @@ public class ThreadListPostsServlet extends HttpServlet {
         String limit = request.getParameter("limit");
         String sort = request.getParameter("sort");
 
-        //TODO change to enum
         int sortType = -1;
         if (sort == null) {
             sort = "flat";
@@ -99,8 +99,7 @@ public class ThreadListPostsServlet extends HttpServlet {
                     }
                     parents.append(')');
                     mySqlServer.closeExecution(resultSetSub, statementSub);
-                    query
-                            .append("select id from post where thread = ")
+                    query.append("select id from post where thread = ")
                             .append(parseInt(thread_str))
                             .append(" and LEFT(parent, 3) in ").append(parents).append(";");
             }
@@ -115,6 +114,7 @@ public class ThreadListPostsServlet extends HttpServlet {
         }
 
         mySqlServer.closeExecution(resultSet, statement);
+        mySqlServer.close();
 
         logger.info(LoggerHelper.finish());
     }

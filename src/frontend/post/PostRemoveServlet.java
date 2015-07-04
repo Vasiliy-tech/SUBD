@@ -22,12 +22,13 @@ public class PostRemoveServlet extends HttpServlet {
     private MySqlConnect mySqlServer;
 
     public PostRemoveServlet(MySqlConnect mySqlServer) {
-        this.mySqlServer = mySqlServer;
+        //this.mySqlServer = mySqlServer;
     }
 
     public void doPost(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         logger.info(LoggerHelper.start());
+        mySqlServer = new MySqlConnect(true);
         JSONObject req = getJSONFromRequest(request, "PostRemove");
 
         short status = ErrorMessages.ok;
@@ -35,7 +36,7 @@ public class PostRemoveServlet extends HttpServlet {
 
         long postId = 0;
         if (req.containsKey("post")) {
-            postId = (long)req.get("post");
+            postId = (long) req.get("post");
         } else {
             status = ErrorMessages.wrongData;
             message = ErrorMessages.wrongJSONData();
@@ -65,6 +66,7 @@ public class PostRemoveServlet extends HttpServlet {
             logger.error(e);
             e.printStackTrace();
         }
+        mySqlServer.close();
         logger.info(LoggerHelper.finish());
     }
 

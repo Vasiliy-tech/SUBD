@@ -25,12 +25,13 @@ public class ThreadSubscribeServlet extends HttpServlet {
     private MySqlConnect mySqlServer;
 
     public ThreadSubscribeServlet(MySqlConnect mySqlServer) {
-        this.mySqlServer = mySqlServer;
+        //this.mySqlServer = mySqlServer;
     }
 
     public void doPost(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         logger.info(LoggerHelper.start());
+        mySqlServer = new MySqlConnect(true);
 
         JSONObject req = getJSONFromRequest(request, "PostCreate");
 
@@ -73,6 +74,7 @@ public class ThreadSubscribeServlet extends HttpServlet {
             logger.error(e);
             e.printStackTrace();
         }
+        mySqlServer.close();
         logger.info(LoggerHelper.finish());
     }
 

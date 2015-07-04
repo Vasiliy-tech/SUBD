@@ -21,11 +21,13 @@ public class ServiceStatusServlet extends HttpServlet {
     private MySqlConnect mySqlServer;
 
     public ServiceStatusServlet(MySqlConnect mySqlServer) {
-        this.mySqlServer = mySqlServer;
+        //this.mySqlServer = mySqlServer;
     }
 
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
+        logger.info(LoggerHelper.start());
+        mySqlServer = new MySqlConnect(true);
         response.setContentType("json;charset=UTF-8");
         response.setHeader("Cache-Control", "no-cache");
         response.setStatus(HttpServletResponse.SC_OK);
@@ -33,7 +35,6 @@ public class ServiceStatusServlet extends HttpServlet {
         JSONObject data = new JSONObject();
 
 
-        logger.info(LoggerHelper.start());
         ResultSet resultSet = null;
         Statement statement = mySqlServer.getStatement();
 
@@ -76,6 +77,7 @@ public class ServiceStatusServlet extends HttpServlet {
         obj.put("response", data);
         obj.put("code", 0);
         response.getWriter().write(obj.toString());
+        mySqlServer.close();
         logger.info(LoggerHelper.finish());
     }
 
