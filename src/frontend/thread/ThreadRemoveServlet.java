@@ -43,7 +43,7 @@ public class ThreadRemoveServlet extends HttpServlet {
 
 
         if (status == ErrorMessages.ok) {
-            String query = "update thread set isDeleted = 1 where id = " + threadId + ";";
+            String query = "update thread set isDeleted = 1, amountOfPost = 0 where id = " + threadId + ";";
             int result = mySqlServer.executeUpdate(query);
             logger.info(resultUpdate(), result);
 

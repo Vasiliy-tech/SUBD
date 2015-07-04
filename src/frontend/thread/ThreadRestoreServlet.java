@@ -50,7 +50,7 @@ public class ThreadRestoreServlet extends HttpServlet {
         String query;
 
         if (status == ErrorMessages.ok) {
-            query = "update thread set isDeleted = 0 where id = " + threadId + ";";
+            query = "update thread set isDeleted = 0, amountOfPost = (select count(1) from post where thread = thread.id) where id = " + threadId + ";";
             result = mySqlServer.executeUpdate(query);
             logger.info(resultUpdate(), result);
             if (result == 0) {

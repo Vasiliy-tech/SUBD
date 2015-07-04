@@ -86,8 +86,8 @@ public class ForumCreateServlet extends HttpServlet {
 
         JSONObject obj = new JSONObject();
         JSONObject data = new JSONObject();
-        /*if (status == ErrorMessages.ok) {
-            if (resultSet.next()) {
+        if (status == ErrorMessages.ok) {
+            if (resultSet != null && resultSet.next()) {
                 data.put("name", resultSet.getString("name"));
                 data.put("user", resultSet.getString("user"));
                 data.put("short_name", resultSet.getString("short_name"));
@@ -97,7 +97,7 @@ public class ForumCreateServlet extends HttpServlet {
                 message = ErrorMessages.noForum();
             }
             obj.put("response", status == ErrorMessages.ok? data: message);
-        }*/
+        }
         obj.put("code", status);
         logger.info(LoggerHelper.responseJSON(), obj.toString());
         response.getWriter().write(obj.toString());

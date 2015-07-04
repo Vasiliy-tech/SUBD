@@ -452,6 +452,45 @@ public class MySqlConnect {
         return data;
     }
 
+    public boolean isThreadDeleted(int id) {
+        boolean result = false;
+        String query = "select isDeleted from thread where id = " + id + ";";
+        Statement statement = getStatement();
+        ResultSet resultSet = executeSelect(query, statement);
+        try {
+            if (resultSet != null && resultSet.next()) {
+                result = resultSet.getBoolean("isDeleted");
+            }
+        } catch (Exception e) {
+            logger.error("Error while getting info about thread");
+            logger.error(e);
+            e.printStackTrace();
+        } finally {
+            closeExecution(resultSet, statement);
+        }
+        return result;
+    }
+
+
+    public String getNameById(int id) {
+        String name = null;
+        String query = "select name from users where id = " + id + ";";
+        Statement statement = getStatement();
+        ResultSet resultSet = executeSelect(query, statement);
+        try {
+            if (resultSet != null && resultSet.next()) {
+                name = resultSet.getString("name");
+            }
+        } catch (Exception e) {
+            logger.error("Error while getting info about thread");
+            logger.error(e);
+            e.printStackTrace();
+        } finally {
+            closeExecution(resultSet, statement);
+        }
+        return name;
+    }
+
 
 
 

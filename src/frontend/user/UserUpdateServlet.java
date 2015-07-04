@@ -44,6 +44,14 @@ public class UserUpdateServlet extends HttpServlet {
         result = mySqlServer.executeUpdate(query);
         logger.info(resultUpdate(), result);
 
+        int id = mySqlServer.getUserIdByEmail(email);
+        if (result == 1) {
+            query = "update post set name = '" + req.get("name") + "'" +
+                    "where author_id = " + id + ";\n";
+            result = mySqlServer.executeUpdate(query);
+        }
+
+
         try {
             createResponse(response, status, message, email);
         } catch (SQLException e) {
