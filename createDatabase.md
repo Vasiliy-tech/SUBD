@@ -11,7 +11,7 @@ create table `users` (
 `isAnonymous` tinyint unsigned not null default '0',
 `about` TEXT,
 primary key (`id`),
-key (`email`)
+key `id__email` (`id`,`email`)
 ) engine=InnoDB default charset=cp1251;
 
 create table `follow` (
@@ -34,7 +34,7 @@ foreign key (`founder_id`) references `users`(id)
 ) engine=InnoDB default charset=cp1251;
 
 create table `thread` (
-`id` mediumint unsigned auto_increment not null unique,
+`id` mediumint unsigned auto_increment not null,
 `isDeleted` tinyint unsigned not null default '0',
 `isClosed` tinyint unsigned not null default '0',
 `founder_id` mediumint unsigned not null,
@@ -45,8 +45,10 @@ create table `thread` (
 `date_of_creating` TIMESTAMP default NOW(),
 `likes` mediumint default 0,
 `dislikes` mediumint default 0,
+`amountOfPost` mediumint(8) unsigned NOT NULL DEFAULT '0',
 primary key (`id`),
-key (`forum_id`, `date_of_creating`),
+key `forum_id` (`forum_id`,`date_of_creating`),
+key `founder_id` (`founder_id`),
 foreign key(`founder_id`) references `users`(id),
 foreign key(`forum_id`) references `forum`(id)
 ) engine=InnoDB default charset=cp1251;
@@ -66,10 +68,13 @@ create table `post` (
 `date_of_creating` TIMESTAMP default NOW(),
 `likes` mediumint default 0,
 `dislikes` mediumint default 0,
+`name` char(64) not null default '',
 primary key (`id`),
-key (`forum_id`, `author_id`, `date_of_creating`),
-key (`thread`, `date_of_creating`),
-foreign key(`author_id`) references `users`(id),
+key `forum_id` (`forum_id`,`author_id`,`date_of_creating`),
+key `thread` (`thread`,`date_of_creating`),
+key `author_id` (`author_id`),
+key `forum_id__name__author_id` (`forum_id`,`name`,`author_id`),
+key `forum_id__data` (`forum_id`,`date_of_creating`),
 foreign key(`forum_id`) references `forum`(id),
 foreign key(`thread`) references `thread`(id)
 ) engine=InnoDB default charset=cp1251;
