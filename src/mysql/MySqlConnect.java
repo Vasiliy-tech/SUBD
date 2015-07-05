@@ -11,7 +11,6 @@ import org.json.simple.JSONObject;
 
 import java.io.IOException;
 import java.sql.*;
-import java.util.Properties;
 
 public class MySqlConnect {
     private static Logger logger = LogManager.getLogger(MySqlConnect.class.getName());
@@ -21,26 +20,7 @@ public class MySqlConnect {
     //private PreparedStatement postDetailsPrepStatement = null;
 
     public MySqlConnect() {
-        try {
 
-            DriverManager.registerDriver((Driver) Class.forName("com.mysql.jdbc.Driver").newInstance());
-            Properties properties=new Properties();
-            properties.setProperty("user","root");
-            properties.setProperty("password","smokey");
-            properties.setProperty("useUnicode","true");
-            properties.setProperty("characterEncoding","windows-1251");
-
-            String url = "jdbc:mysql://localhost:3306/SMDB";
-            connection = null;
-
-            connection = DriverManager.getConnection(url, properties);
-            logger.info(LoggerHelper.connection(), url);
-            //String query = "select id, author_id, forum_id, date_of_creating as date, likes, dislikes, isApproved, isDeleted, isEdited, isSpam, isHighlighted, message, parent, thread from post where post.id = ?;";
-            //postDetailsPrepStatement = connection.prepareStatement(query);
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.exit(-1);
-        }
     }
 
     public MySqlConnect(boolean withConnectionPool) {
@@ -78,6 +58,8 @@ public class MySqlConnect {
         }
         return resultSet;
     }
+
+
 
 
     public int executeUpdate(String query){
@@ -214,10 +196,10 @@ public class MySqlConnect {
                 data.put("username", resultSet.getString("username").equals("")? null : resultSet.getString("username") );
                 data.put("id", resultSet.getInt("id"));
 
-                query = "select email from users join follow on followee_id = id where follower_id = " + resultSet.getInt("id") + ";";
+                query = "select email from users use index (id__email) join follow on followee_id = id where follower_id = " + resultSet.getInt("id") + ";";
                 followee = executeSelect(query, statementFollowee);
 
-                query = "select email from users join follow on follower_id = id where followee_id = " + resultSet.getInt("id") + ";";
+                query = "select email from users use index (id__email) join follow on follower_id = id where followee_id = " + resultSet.getInt("id") + ";";
                 follower = executeSelect(query, statementFollower);
 
                 query = "select thread_id from users join subscribtion on user_id = id where id = " + resultSet.getInt("id") + ";";
@@ -236,13 +218,13 @@ public class MySqlConnect {
             JSONArray subscribed = new JSONArray();
 
             while(followee.next()) {
-                toFollow.add(followee.getString("email"));
+                toFollow.add(followee.getString(1));
             }
             while(follower.next()) {
-                iAmFollowed.add(follower.getString("email"));
+                iAmFollowed.add(follower.getString(1));
             }
             while(subscription.next()) {
-                subscribed.add(subscription.getInt("thread_id"));
+                subscribed.add(subscription.getInt(1));
             }
             data.put("following", toFollow);
             data.put("followers", iAmFollowed);
@@ -269,9 +251,9 @@ public class MySqlConnect {
         resultSet = executeSelect(query, statement);
         try {
             if(resultSet.next()) {
-                query = "select email from users join follow on followee_id = id where follower_id = " + resultSet.getInt("id") + ";";
+                query = "select email from users use index (id__email) join follow on followee_id = id where follower_id = " + resultSet.getInt("id") + ";";
                 followee = executeSelect(query, statement_followee);
-                query = "select email from users join follow on follower_id = id where followee_id = " + resultSet.getInt("id") + ";";
+                query = "select email from users use index (id__email) join follow on follower_id = id where followee_id = " + resultSet.getInt("id") + ";";
                 follower = executeSelect(query, statement_follower);
                 query = "select thread_id from users join subscribtion on user_id = id where id = " + resultSet.getInt("id") + ";";
                 subscription = executeSelect(query, statement_subscription);
@@ -290,7 +272,7 @@ public class MySqlConnect {
         JSONArray iAmFollowed = new JSONArray();
         JSONArray subscribed = new JSONArray();
 
-        if (status != ErrorMessages.ok || resultSet == null) {
+        if (status != ErrorMessages.ok ) {
             data.put("error", message);
         } else {
             data.put("isAnonymous", resultSet.getBoolean("isAnonymous"));
@@ -300,13 +282,13 @@ public class MySqlConnect {
             data.put("username", resultSet.getString("username").equals("")? null : resultSet.getString("username") );
             data.put("id", resultSet.getInt("id"));
             while(followee.next()) {
-                toFollow.add(followee.getString("email"));
+                toFollow.add(followee.getString(1));
             }
             while(follower.next()) {
-                iAmFollowed.add(follower.getString("email"));
+                iAmFollowed.add(follower.getString(1));
             }
             while(subscription.next()) {
-                subscribed.add(subscription.getInt("thread_id"));
+                subscribed.add(subscription.getInt(1));
             }
             data.put("following", toFollow);
             data.put("followers", iAmFollowed);
@@ -322,30 +304,151 @@ public class MySqlConnect {
 
 
 
-    public JSONObject getForumDetailsById(int id, String related) throws IOException, SQLException {
+    public JSONObject getForumDetailsById(int id) throws IOException, SQLException {
         ResultSet resultSet;
         Statement statement = getStatement();
         // todo убрать join
-        String query = "select forum.id, founder_id, forum.name, short_name, email from forum " +
+        String query = "select forum.id, forum.name, short_name, email from forum " +
                 "join users on founder_id = users.id " +
                 "where forum.id = '" + id +"';";
         resultSet = executeSelect(query, statement);
 
         JSONObject data = new JSONObject();
         if (resultSet.next()) {
-            if (related != null) {
-                data.put("user", getUserDetail(resultSet.getInt("founder_id")));
-            } else {
-                data.put("user", resultSet.getString("email"));
-            }
-            data.put("name", resultSet.getString("name"));
-            data.put("id", resultSet.getString("id"));
-            data.put("short_name", resultSet.getString("short_name"));
+            data.put("user", resultSet.getString(4));
+            data.put("name", resultSet.getString(2));
+            data.put("id", resultSet.getString(1));
+            data.put("short_name", resultSet.getString(3));
             logger.info(LoggerHelper.forumDetailJSON(), data.toString());
         } else {
             data = null;
         }
         closeExecution(resultSet, statement);
+        return data;
+    }
+
+    PreparedStatement forumStatement;
+    public void prepareStatementsForForumDetails() {
+        try {
+            forumStatement = connection.prepareStatement("select id, founder_id, name, short_name from forum where forum.id = ?;");
+        } catch (Exception e) {
+            logger.error(e);
+            e.printStackTrace();
+        }
+    }
+
+    public void closeStatementsForForumDetails() {
+        try {
+            forumStatement.close();
+        } catch (Exception e) {
+            logger.error(e);
+            e.printStackTrace();
+        }
+    }
+
+    public JSONObject getForumDetailsByIdWithPreparedStatements(int id) throws IOException, SQLException {
+        ResultSet resultSet;
+        forumStatement.setInt(1, id);
+        resultSet = forumStatement.executeQuery();
+        JSONObject data = new JSONObject();
+        if (resultSet != null && resultSet.next()) {
+            data.put("user", getEmailById(resultSet.getInt(2)));
+            data.put("name", resultSet.getString(3));
+            data.put("id", resultSet.getString(1));
+            data.put("short_name", resultSet.getString(4));
+            logger.info(LoggerHelper.forumDetailJSON(), data.toString());
+            resultSet.close();
+        } else {
+            data = null;
+        }
+        return data;
+    }
+
+    private PreparedStatement threadStatement;
+    private PreparedStatement threadEmailStatement;
+    private PreparedStatement threadShortForumStatement;
+
+    public void prepareStatementsForThreadDetails(boolean user, boolean forum) {
+        try {
+            threadStatement = connection.prepareStatement("select forum_id, founder_id, date_of_creating as date, id, isClosed, isDeleted, message, slug, title, likes, dislikes, amountOfPost from thread where id = ?;");
+            if (!user) {
+                threadEmailStatement = connection.prepareStatement("select email from users use index (id__email) where id = ?;");
+            }
+            if (forum) {
+                prepareStatementsForForumDetails();
+            } else {
+                threadShortForumStatement = connection.prepareStatement("select short_name from forum where id = ?;");
+            }
+        } catch (Exception e) {
+            logger.info(e);
+            e.printStackTrace();
+        }
+    }
+
+    public void closeStatementsForThreadDetails(boolean user, boolean forum) {
+        try {
+            threadStatement.close();
+            if (!user) {
+                threadEmailStatement.close();
+            }
+            if (forum) {
+                closeStatementsForForumDetails();
+            } else {
+                threadShortForumStatement.close();
+            }
+        } catch (Exception e) {
+            logger.info(e);
+            e.printStackTrace();
+        }
+    }
+
+    public JSONObject getThreadDetailsByIdWithPreparedStatements(int id, boolean user, boolean forum) throws IOException, SQLException {
+        threadStatement.setInt(1, id);
+        ResultSet resultSet = threadStatement.executeQuery();
+
+        JSONObject data = new JSONObject();
+
+        if (resultSet != null && resultSet.next()) {
+
+            data.put("date", resultSet.getString(3).substring(0, 19));
+            data.put("dislikes", resultSet.getInt(11));
+            if (forum) {
+                data.put("forum", getForumDetailsByIdWithPreparedStatements(resultSet.getInt(1)));
+            } else {
+                threadShortForumStatement.setInt(1, resultSet.getInt(1));
+                ResultSet shortNameResultSet= threadShortForumStatement.executeQuery();
+                if (shortNameResultSet.next()) {
+                    data.put("forum", shortNameResultSet.getString(1));
+                }
+                shortNameResultSet.close();
+            }
+            data.put("id", resultSet.getInt(4));
+            data.put("isClosed", resultSet.getBoolean(5));
+            data.put("isDeleted", resultSet.getBoolean(6));
+            data.put("likes", resultSet.getInt(10));
+            data.put("message", resultSet.getString(7));
+            data.put("points", resultSet.getInt(10) - resultSet.getInt(11) );
+            data.put("posts", resultSet.getInt(12));
+            data.put("slug", resultSet.getString(8));
+            data.put("title", resultSet.getString(9));
+            if (user) {
+                data.put("user", getUserDetail(resultSet.getInt(2)));
+            } else {
+                threadEmailStatement.setInt(1, resultSet.getInt(2));
+                ResultSet emailResultSet= threadEmailStatement.executeQuery();
+                if (emailResultSet.next()) {
+                    data.put("user", emailResultSet.getString(1));
+                }
+                emailResultSet.close();
+            }
+        } else {
+            String message = "There is no thread with such id!";
+            data.put("error", message);
+            logger.error(message);
+        }
+
+        resultSet.close();
+        logger.info(LoggerHelper.threadDetailJSON(), data.toString());
         return data;
     }
 
@@ -362,13 +465,13 @@ public class MySqlConnect {
         JSONObject data = new JSONObject();
         if (resultSet.next()) {
             if (related != null) {
-                data.put("user", getUserDetail(resultSet.getInt("founder_id")));
+                data.put("user", getUserDetail(resultSet.getInt(2)));
             } else {
-                data.put("user", resultSet.getString("email"));
+                data.put("user", resultSet.getString(5));
             }
-            data.put("name", resultSet.getString("name"));
-            data.put("id", resultSet.getString("id"));
-            data.put("short_name", resultSet.getString("short_name"));
+            data.put("name", resultSet.getString(3));
+            data.put("id", resultSet.getString(1));
+            data.put("short_name", resultSet.getString(4));
             logger.info(LoggerHelper.forumDetailJSON(), data.toString());
         } else {
             data = null;
@@ -385,7 +488,7 @@ public class MySqlConnect {
         String email = null;
         try {
             if (resultSet != null && resultSet.next()) {
-                email =  resultSet.getString("email");
+                email =  resultSet.getString(1);
             }
         } catch (Exception e) {
             logger.error(e);
@@ -492,13 +595,97 @@ public class MySqlConnect {
 
 
 
+    private PreparedStatement postDetailsStatement;
+    private PreparedStatement postDetailsForumStatement;
+    public void prepareStatementsForPostDetails() {
+        try {
+            postDetailsStatement = connection.prepareStatement("select id, author_id, forum_id, date_of_creating as date, likes, dislikes, isApproved, isDeleted, isEdited, isSpam, isHighlighted, message, parent, thread from post where post.id = ?;");
+            postDetailsForumStatement = connection.prepareStatement("select short_name from forum where id = ?;");
+        } catch (Exception e) {
+            logger.error(e);
+            e.printStackTrace();
+        }
+    }
+
+    public void closePrepareStatementForPostDetails() {
+        try {
+            postDetailsStatement.close();
+            postDetailsForumStatement.close();
+        } catch (Exception e) {
+            logger.error(e);
+            e.printStackTrace();
+        }
+    }
+
+    public JSONObject getPostDetailsWithPrepareStatement(int id, boolean user, boolean thread, boolean forum) throws IOException, SQLException {
+
+        ResultSet resultSet = null;
+        postDetailsStatement.setInt(1, id);
+        resultSet = postDetailsStatement.executeQuery();
+
+        JSONObject data = new JSONObject();
+        if (resultSet != null && resultSet.next()) {
+            data.put("date", resultSet.getString(4).substring(0, 19));
+            int forumId = resultSet.getInt(3);
+            if (forum) {
+                data.put("forum", getForumDetailsById(forumId));
+            } else {
+                postDetailsForumStatement.setInt(1, forumId);
+                ResultSet forumResultSet = postDetailsForumStatement.executeQuery();
+                try {
+                    if (forumResultSet.next()) {
+                        data.put("forum", forumResultSet.getString(1));
+                    }
+                    else {
+                        data.put("forum", null);
+                    }
+                } catch (Exception e) {
+                    data.put("forum", null);
+                    e.printStackTrace();
+                    logger.error(e);
+                    logger.error("Error in getting post details");
+                } finally {
+                    forumResultSet.close();
+                }
+            }
+            data.put("id", resultSet.getInt(1));
+            data.put("isApproved", resultSet.getBoolean(7));
+            data.put("isHighlighted", resultSet.getInt(11) == 1 ? true : false);
+            data.put("isEdited", resultSet.getBoolean(9));
+            data.put("isSpam", resultSet.getBoolean(10));
+            data.put("isDeleted", resultSet.getBoolean(8));
+            data.put("message", resultSet.getString(12));
+            data.put("likes", resultSet.getInt(5));
+            data.put("dislikes", resultSet.getInt(6));
+            data.put("points", resultSet.getInt(5) - resultSet.getInt(6));
+            String temp = resultSet.getString(13);
+            if (temp.equals("")) {
+                data.put("parent", null);
+            }else {
+                int indexLast = temp.lastIndexOf("_");
+                data.put("parent", Integer.parseInt(temp.substring(indexLast + 1)));
+            }
+            if (thread) {
+                data.put("thread", getThreadDetailsById(resultSet.getInt(14), false, false));
+            } else {
+                data.put("thread", resultSet.getInt(14));
+            }
+
+            if (user) {
+                data.put("user", getUserDetail(resultSet.getInt(2)));
+            } else {
+                data.put("user", getEmailById(resultSet.getInt(2)));
+            }
+            logger.info(LoggerHelper.postDetailJSON(), data.toString());
+        } else {
+            data = null;
+        }
+        resultSet.close();
+        return data;
+    }
+
 
     public JSONObject getPostDetails(int id, boolean user, boolean thread, boolean forum) throws IOException, SQLException {
-
-
-        //postDetailsPrepStatement.setInt(1, id);
-
-        //ResultSet resultSet = postDetailsPrepStatement.executeQuery();
         ResultSet resultSet = null;
         Statement statement = getStatement();
         String query = "select id, author_id, forum_id, date_of_creating as date, likes, dislikes, isApproved, isDeleted, isEdited, isSpam, isHighlighted, message, parent, thread " +
@@ -509,7 +696,7 @@ public class MySqlConnect {
         if (resultSet != null && resultSet.next()) {
             data.put("date", resultSet.getString("date").substring(0, 19));
             if (forum) {
-                data.put("forum", getForumDetailsById(resultSet.getInt("forum_id"), null));
+                data.put("forum", getForumDetailsById(resultSet.getInt("forum_id")));
             } else {
                 String queryForum = "select short_name from forum where id = " + resultSet.getInt("forum_id") + ";";
                 ResultSet forumResultSet;

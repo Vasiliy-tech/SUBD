@@ -2,84 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c62222c8-4c38-4c43-abd7-bee1ec7065a6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_dbcp_commons_dbcp_1_2_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_pool_commons_pool_1_3.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Game-1.0-jar-with-dependencies.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Game-1.0-jar-with-dependencies.jar" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/frontend/forum/ForumCreateServlet.class" afterPath="$PROJECT_DIR$/target/classes/frontend/forum/ForumCreateServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/frontend/forum/ForumDetailsServlet.class" afterPath="$PROJECT_DIR$/target/classes/frontend/forum/ForumDetailsServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/frontend/forum/ForumListPostsServlet.class" afterPath="$PROJECT_DIR$/target/classes/frontend/forum/ForumListPostsServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/frontend/forum/ForumListThreadsServlet.class" afterPath="$PROJECT_DIR$/target/classes/frontend/forum/ForumListThreadsServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/frontend/forum/ForumListUsersServlet.class" afterPath="$PROJECT_DIR$/target/classes/frontend/forum/ForumListUsersServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mysql/MySqlConnect.class" afterPath="$PROJECT_DIR$/target/classes/mysql/MySqlConnect.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/frontend/post/PostCreateServlet.class" afterPath="$PROJECT_DIR$/target/classes/frontend/post/PostCreateServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/frontend/post/PostDetailsServlet.class" afterPath="$PROJECT_DIR$/target/classes/frontend/post/PostDetailsServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/frontend/post/PostListServlet.class" afterPath="$PROJECT_DIR$/target/classes/frontend/post/PostListServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/frontend/post/PostRemoveServlet.class" afterPath="$PROJECT_DIR$/target/classes/frontend/post/PostRemoveServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/frontend/post/PostRestoreServlet.class" afterPath="$PROJECT_DIR$/target/classes/frontend/post/PostRestoreServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/frontend/post/PostUpdateServlet.class" afterPath="$PROJECT_DIR$/target/classes/frontend/post/PostUpdateServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/frontend/post/PostVoteServlet.class" afterPath="$PROJECT_DIR$/target/classes/frontend/post/PostVoteServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/frontend/ServiceClearServlet.class" afterPath="$PROJECT_DIR$/target/classes/frontend/ServiceClearServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/frontend/ServiceStatusServlet.class" afterPath="$PROJECT_DIR$/target/classes/frontend/ServiceStatusServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/frontend/thread/ThreadCloseServlet.class" afterPath="$PROJECT_DIR$/target/classes/frontend/thread/ThreadCloseServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/frontend/thread/ThreadCreateServlet.class" afterPath="$PROJECT_DIR$/target/classes/frontend/thread/ThreadCreateServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/frontend/thread/ThreadDetailsServlet.class" afterPath="$PROJECT_DIR$/target/classes/frontend/thread/ThreadDetailsServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/frontend/thread/ThreadListPostsServlet.class" afterPath="$PROJECT_DIR$/target/classes/frontend/thread/ThreadListPostsServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/frontend/thread/ThreadListServlet.class" afterPath="$PROJECT_DIR$/target/classes/frontend/thread/ThreadListServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/frontend/thread/ThreadOpenServlet.class" afterPath="$PROJECT_DIR$/target/classes/frontend/thread/ThreadOpenServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/frontend/thread/ThreadRemoveServlet.class" afterPath="$PROJECT_DIR$/target/classes/frontend/thread/ThreadRemoveServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/frontend/thread/ThreadRestoreServlet.class" afterPath="$PROJECT_DIR$/target/classes/frontend/thread/ThreadRestoreServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/frontend/thread/ThreadSubscribeServlet.class" afterPath="$PROJECT_DIR$/target/classes/frontend/thread/ThreadSubscribeServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/frontend/thread/ThreadUnsubscribeServlet.class" afterPath="$PROJECT_DIR$/target/classes/frontend/thread/ThreadUnsubscribeServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/frontend/thread/ThreadUpdateServlet.class" afterPath="$PROJECT_DIR$/target/classes/frontend/thread/ThreadUpdateServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/frontend/thread/ThreadVoteServlet.class" afterPath="$PROJECT_DIR$/target/classes/frontend/thread/ThreadVoteServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/frontend/user/UserCreateServlet.class" afterPath="$PROJECT_DIR$/target/classes/frontend/user/UserCreateServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/frontend/user/UserDetailsServlet.class" afterPath="$PROJECT_DIR$/target/classes/frontend/user/UserDetailsServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/frontend/user/UserFollowServlet.class" afterPath="$PROJECT_DIR$/target/classes/frontend/user/UserFollowServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/frontend/user/UserListFolloweeServlet.class" afterPath="$PROJECT_DIR$/target/classes/frontend/user/UserListFolloweeServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/frontend/user/UserListFollowerServlet.class" afterPath="$PROJECT_DIR$/target/classes/frontend/user/UserListFollowerServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/frontend/user/UserListPostsServlet.class" afterPath="$PROJECT_DIR$/target/classes/frontend/user/UserListPostsServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/frontend/user/UserListServlet.class" afterPath="$PROJECT_DIR$/target/classes/frontend/user/UserListServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/frontend/user/UserUnfollowServlet.class" afterPath="$PROJECT_DIR$/target/classes/frontend/user/UserUnfollowServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/frontend/user/UserUpdateServlet.class" afterPath="$PROJECT_DIR$/target/classes/frontend/user/UserUpdateServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/forum/ForumCreateServlet.java" afterPath="$PROJECT_DIR$/src/frontend/forum/ForumCreateServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/forum/ForumDetailsServlet.java" afterPath="$PROJECT_DIR$/src/frontend/forum/ForumDetailsServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/Game-1.0-jar-with-dependencies.jar" afterPath="$PROJECT_DIR$/server/Game-1.0-jar-with-dependencies.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mysql/ConnectionPool.java" afterPath="$PROJECT_DIR$/src/mysql/ConnectionPool.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/forum/ForumListPostsServlet.java" afterPath="$PROJECT_DIR$/src/frontend/forum/ForumListPostsServlet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/forum/ForumListThreadsServlet.java" afterPath="$PROJECT_DIR$/src/frontend/forum/ForumListThreadsServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/forum/ForumListUsersServlet.java" afterPath="$PROJECT_DIR$/src/frontend/forum/ForumListUsersServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Game.iml" afterPath="$PROJECT_DIR$/Game.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mysql/MySqlConnect.java" afterPath="$PROJECT_DIR$/src/mysql/MySqlConnect.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/post/PostCreateServlet.java" afterPath="$PROJECT_DIR$/src/frontend/post/PostCreateServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/post/PostDetailsServlet.java" afterPath="$PROJECT_DIR$/src/frontend/post/PostDetailsServlet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/post/PostListServlet.java" afterPath="$PROJECT_DIR$/src/frontend/post/PostListServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/post/PostRemoveServlet.java" afterPath="$PROJECT_DIR$/src/frontend/post/PostRemoveServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/post/PostRestoreServlet.java" afterPath="$PROJECT_DIR$/src/frontend/post/PostRestoreServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/post/PostUpdateServlet.java" afterPath="$PROJECT_DIR$/src/frontend/post/PostUpdateServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/post/PostVoteServlet.java" afterPath="$PROJECT_DIR$/src/frontend/post/PostVoteServlet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/ServiceClearServlet.java" afterPath="$PROJECT_DIR$/src/frontend/ServiceClearServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/ServiceStatusServlet.java" afterPath="$PROJECT_DIR$/src/frontend/ServiceStatusServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/thread/ThreadCloseServlet.java" afterPath="$PROJECT_DIR$/src/frontend/thread/ThreadCloseServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/thread/ThreadCreateServlet.java" afterPath="$PROJECT_DIR$/src/frontend/thread/ThreadCreateServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/thread/ThreadDetailsServlet.java" afterPath="$PROJECT_DIR$/src/frontend/thread/ThreadDetailsServlet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/thread/ThreadListPostsServlet.java" afterPath="$PROJECT_DIR$/src/frontend/thread/ThreadListPostsServlet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/thread/ThreadListServlet.java" afterPath="$PROJECT_DIR$/src/frontend/thread/ThreadListServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/thread/ThreadOpenServlet.java" afterPath="$PROJECT_DIR$/src/frontend/thread/ThreadOpenServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/thread/ThreadRemoveServlet.java" afterPath="$PROJECT_DIR$/src/frontend/thread/ThreadRemoveServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/thread/ThreadRestoreServlet.java" afterPath="$PROJECT_DIR$/src/frontend/thread/ThreadRestoreServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/thread/ThreadSubscribeServlet.java" afterPath="$PROJECT_DIR$/src/frontend/thread/ThreadSubscribeServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/thread/ThreadUnsubscribeServlet.java" afterPath="$PROJECT_DIR$/src/frontend/thread/ThreadUnsubscribeServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/thread/ThreadUpdateServlet.java" afterPath="$PROJECT_DIR$/src/frontend/thread/ThreadUpdateServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/thread/ThreadVoteServlet.java" afterPath="$PROJECT_DIR$/src/frontend/thread/ThreadVoteServlet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/user/UserCreateServlet.java" afterPath="$PROJECT_DIR$/src/frontend/user/UserCreateServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/user/UserDetailsServlet.java" afterPath="$PROJECT_DIR$/src/frontend/user/UserDetailsServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/user/UserFollowServlet.java" afterPath="$PROJECT_DIR$/src/frontend/user/UserFollowServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/user/UserListFolloweeServlet.java" afterPath="$PROJECT_DIR$/src/frontend/user/UserListFolloweeServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/user/UserListFollowerServlet.java" afterPath="$PROJECT_DIR$/src/frontend/user/UserListFollowerServlet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/user/UserListPostsServlet.java" afterPath="$PROJECT_DIR$/src/frontend/user/UserListPostsServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/user/UserListServlet.java" afterPath="$PROJECT_DIR$/src/frontend/user/UserListServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/user/UserUnfollowServlet.java" afterPath="$PROJECT_DIR$/src/frontend/user/UserUnfollowServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frontend/user/UserUpdateServlet.java" afterPath="$PROJECT_DIR$/src/frontend/user/UserUpdateServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Game.iws" />
@@ -110,51 +44,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="UserDetailsServlet.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/frontend/user/UserDetailsServlet.java">
+      <file leaf-file-name="MySqlConnect.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mysql/MySqlConnect.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="118" max-vertical-offset="840">
-              <caret line="41" column="28" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="28" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="9023" max-vertical-offset="11445">
+              <caret line="611" column="0" selection-start-line="611" selection-start-column="0" selection-end-line="611" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#655#656#0" expanded="true" />
+                <element signature="e#719#720#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserFollowServlet.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/frontend/user/UserFollowServlet.java">
+      <file leaf-file-name="ConnectionPool.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/mysql/ConnectionPool.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="208" max-vertical-offset="975">
-              <caret line="55" column="28" selection-start-line="55" selection-start-column="28" selection-end-line="55" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserListFolloweeServlet.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/frontend/user/UserListFolloweeServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="375" max-vertical-offset="1110">
-              <caret line="65" column="28" selection-start-line="65" selection-start-column="28" selection-end-line="65" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserListFollowerServlet.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/frontend/user/UserListFollowerServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="375" max-vertical-offset="1065">
-              <caret line="63" column="28" selection-start-line="63" selection-start-column="28" selection-end-line="63" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserListPostsServlet.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/frontend/user/UserListPostsServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="1110">
-              <caret line="62" column="28" selection-start-line="62" selection-start-column="28" selection-end-line="62" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.27210885" vertical-offset="45" max-vertical-offset="1305">
+              <caret line="19" column="49" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -165,46 +73,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="1110">
               <caret line="62" column="28" selection-start-line="62" selection-start-column="28" selection-end-line="62" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConnectionPool.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mysql/ConnectionPool.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="1305">
-              <caret line="17" column="45" selection-start-line="17" selection-start-column="45" selection-end-line="17" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="server.log" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/out/2015_07_04_22_10_48/server.log">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.2593458" vertical-offset="1395" max-vertical-offset="12630">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserListServlet.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/frontend/user/UserListServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="1050">
-              <caret line="48" column="28" selection-start-line="48" selection-start-column="28" selection-end-line="48" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserUnfollowServlet.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/frontend/user/UserUnfollowServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="1005">
-              <caret line="57" column="28" selection-start-line="57" selection-start-column="28" selection-end-line="57" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -232,17 +100,10 @@
         <option value="$PROJECT_DIR$/assembly.sh" />
         <option value="$PROJECT_DIR$/createDatabase.md" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/mysql/MySqlConnect.java" />
-        <option value="$PROJECT_DIR$/src/frontend/ServiceClearServlet.java" />
-        <option value="$PROJECT_DIR$/src/frontend/ServiceStatusServlet.java" />
         <option value="$PROJECT_DIR$/src/frontend/forum/ForumCreateServlet.java" />
         <option value="$PROJECT_DIR$/src/frontend/forum/ForumDetailsServlet.java" />
-        <option value="$PROJECT_DIR$/src/frontend/forum/ForumListPostsServlet.java" />
-        <option value="$PROJECT_DIR$/src/frontend/forum/ForumListThreadsServlet.java" />
         <option value="$PROJECT_DIR$/src/frontend/forum/ForumListUsersServlet.java" />
-        <option value="$PROJECT_DIR$/src/frontend/post/PostCreateServlet.java" />
         <option value="$PROJECT_DIR$/src/frontend/post/PostDetailsServlet.java" />
-        <option value="$PROJECT_DIR$/src/frontend/post/PostListServlet.java" />
         <option value="$PROJECT_DIR$/src/frontend/post/PostRemoveServlet.java" />
         <option value="$PROJECT_DIR$/src/frontend/post/PostRestoreServlet.java" />
         <option value="$PROJECT_DIR$/src/frontend/post/PostUpdateServlet.java" />
@@ -250,8 +111,6 @@
         <option value="$PROJECT_DIR$/src/frontend/thread/ThreadCloseServlet.java" />
         <option value="$PROJECT_DIR$/src/frontend/thread/ThreadCreateServlet.java" />
         <option value="$PROJECT_DIR$/src/frontend/thread/ThreadDetailsServlet.java" />
-        <option value="$PROJECT_DIR$/src/frontend/thread/ThreadListPostsServlet.java" />
-        <option value="$PROJECT_DIR$/src/frontend/thread/ThreadListServlet.java" />
         <option value="$PROJECT_DIR$/src/frontend/thread/ThreadOpenServlet.java" />
         <option value="$PROJECT_DIR$/src/frontend/thread/ThreadRemoveServlet.java" />
         <option value="$PROJECT_DIR$/src/frontend/thread/ThreadRestoreServlet.java" />
@@ -259,15 +118,24 @@
         <option value="$PROJECT_DIR$/src/frontend/thread/ThreadUnsubscribeServlet.java" />
         <option value="$PROJECT_DIR$/src/frontend/thread/ThreadUpdateServlet.java" />
         <option value="$PROJECT_DIR$/src/frontend/thread/ThreadVoteServlet.java" />
-        <option value="$PROJECT_DIR$/src/frontend/user/UserCreateServlet.java" />
         <option value="$PROJECT_DIR$/src/frontend/user/UserDetailsServlet.java" />
         <option value="$PROJECT_DIR$/src/frontend/user/UserFollowServlet.java" />
         <option value="$PROJECT_DIR$/src/frontend/user/UserListFolloweeServlet.java" />
         <option value="$PROJECT_DIR$/src/frontend/user/UserListFollowerServlet.java" />
-        <option value="$PROJECT_DIR$/src/frontend/user/UserListPostsServlet.java" />
         <option value="$PROJECT_DIR$/src/frontend/user/UserListServlet.java" />
         <option value="$PROJECT_DIR$/src/frontend/user/UserUnfollowServlet.java" />
         <option value="$PROJECT_DIR$/src/frontend/user/UserUpdateServlet.java" />
+        <option value="$PROJECT_DIR$/src/frontend/ServiceStatusServlet.java" />
+        <option value="$PROJECT_DIR$/src/frontend/ServiceClearServlet.java" />
+        <option value="$PROJECT_DIR$/src/frontend/forum/ForumListPostsServlet.java" />
+        <option value="$PROJECT_DIR$/src/frontend/forum/ForumListThreadsServlet.java" />
+        <option value="$PROJECT_DIR$/src/frontend/post/PostCreateServlet.java" />
+        <option value="$PROJECT_DIR$/src/frontend/post/PostListServlet.java" />
+        <option value="$PROJECT_DIR$/src/frontend/thread/ThreadListPostsServlet.java" />
+        <option value="$PROJECT_DIR$/src/frontend/thread/ThreadListServlet.java" />
+        <option value="$PROJECT_DIR$/src/frontend/user/UserCreateServlet.java" />
+        <option value="$PROJECT_DIR$/src/frontend/user/UserListPostsServlet.java" />
+        <option value="$PROJECT_DIR$/src/mysql/MySqlConnect.java" />
         <option value="$PROJECT_DIR$/src/mysql/ConnectionPool.java" />
       </list>
     </option>
@@ -511,11 +379,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="out" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="2015_07_04_22_10_48" />
+              <option name="myItemId" value="server" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -530,6 +394,42 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="out" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Game" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SUBD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="out" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="2015_07_04_22_13_50" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Game" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SUBD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="out" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="2015_07_04_22_10_48" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -551,6 +451,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/server" />
+      <recent name="$PROJECT_DIR$/server/public_html" />
       <recent name="$PROJECT_DIR$/target" />
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -840,11 +742,11 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="49" y="24" width="1317" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3272059" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3272059" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32591414" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2551834" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -852,10 +754,11 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.0" sideWeight="0.49892932" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25358853" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.0" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25358853" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32750398" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30039215" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -866,7 +769,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.0" sideWeight="0.5010707" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -923,13 +825,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/helper/LoggerHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/helper/CommonHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="735">
@@ -1000,46 +895,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/createDatabase.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1050" max-vertical-offset="1395">
-          <caret line="70" column="24" selection-start-line="70" selection-start-column="24" selection-end-line="70" selection-end-column="24" />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1335" max-vertical-offset="1965">
           <caret line="97" column="0" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mysql/MySqlConnect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1431" max-vertical-offset="8505">
-          <caret line="117" column="0" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
-          <folding>
-            <element signature="e#1711#1712#0" expanded="false" />
-            <element signature="e#1775#1776#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/frontend/ServiceClearServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="375" max-vertical-offset="885">
-          <caret line="41" column="5" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/frontend/ServiceStatusServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="501" max-vertical-offset="1365">
-          <caret line="37" column="35" selection-start-line="37" selection-start-column="35" selection-end-line="37" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -1057,45 +917,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/frontend/forum/ForumListPostsServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="1665">
-          <caret line="60" column="36" selection-start-line="60" selection-start-column="36" selection-end-line="60" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/frontend/forum/ForumListThreadsServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="1560">
-          <caret line="54" column="81" selection-start-line="54" selection-start-column="8" selection-end-line="54" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/frontend/forum/ForumListUsersServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="555" max-vertical-offset="1350">
           <caret line="77" column="28" selection-start-line="77" selection-start-column="28" selection-end-line="77" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/frontend/post/PostCreateServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2436" max-vertical-offset="2940">
-          <caret line="190" column="28" selection-start-line="190" selection-start-column="28" selection-end-line="190" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/frontend/post/PostDetailsServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="23" max-vertical-offset="1230">
-          <caret line="43" column="28" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/frontend/post/PostListServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="645" max-vertical-offset="1410">
-          <caret line="83" column="28" selection-start-line="83" selection-start-column="28" selection-end-line="83" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -1148,20 +973,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/frontend/thread/ThreadListPostsServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1110" max-vertical-offset="1905">
-          <caret line="116" column="28" selection-start-line="116" selection-start-column="28" selection-end-line="116" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/frontend/thread/ThreadListServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="555" max-vertical-offset="1260">
-          <caret line="75" column="28" selection-start-line="75" selection-start-column="28" selection-end-line="75" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/frontend/thread/ThreadOpenServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="555" max-vertical-offset="1110">
@@ -1211,27 +1022,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/frontend/user/UserCreateServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="585" max-vertical-offset="1380">
-          <caret line="81" column="28" selection-start-line="81" selection-start-column="28" selection-end-line="81" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/frontend/user/UserDetailsServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="118" max-vertical-offset="840">
-          <caret line="41" column="28" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/frontend/user/UserFollowServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="208" max-vertical-offset="975">
           <caret line="55" column="28" selection-start-line="55" selection-start-column="28" selection-end-line="55" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1239,7 +1033,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="375" max-vertical-offset="1110">
           <caret line="65" column="28" selection-start-line="65" selection-start-column="28" selection-end-line="65" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1247,22 +1040,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="375" max-vertical-offset="1065">
           <caret line="63" column="28" selection-start-line="63" selection-start-column="28" selection-end-line="63" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/frontend/user/UserListPostsServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="1110">
-          <caret line="62" column="28" selection-start-line="62" selection-start-column="28" selection-end-line="62" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/frontend/user/UserListServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="1050">
-          <caret line="48" column="28" selection-start-line="48" selection-start-column="28" selection-end-line="48" selection-end-column="28" />
           <folding />
         </state>
       </provider>
@@ -1275,6 +1052,140 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/out/2015_07_04_22_10_48/server.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1395" max-vertical-offset="12630">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/2015_07_04_22_13_50/server.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3555" max-vertical-offset="25275">
+          <caret line="237" column="74" selection-start-line="237" selection-start-column="74" selection-end-line="237" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/createDatabase.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.586206" vertical-offset="801" max-vertical-offset="1395">
+          <caret line="70" column="24" selection-start-line="70" selection-start-column="24" selection-end-line="70" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/frontend/ServiceStatusServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1170">
+          <caret line="37" column="35" selection-start-line="37" selection-start-column="35" selection-end-line="37" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/frontend/ServiceClearServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="720">
+          <caret line="21" column="46" selection-start-line="21" selection-start-column="46" selection-end-line="21" selection-end-column="46" />
+          <folding>
+            <element signature="e#669#670#0" expanded="true" />
+            <element signature="e#722#723#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/frontend/forum/ForumListPostsServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1157" max-vertical-offset="1680">
+          <caret line="115" column="66" selection-start-line="115" selection-start-column="66" selection-end-line="115" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/frontend/forum/ForumListThreadsServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="945" max-vertical-offset="1575">
+          <caret line="108" column="73" selection-start-line="108" selection-start-column="73" selection-end-line="108" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/frontend/post/PostCreateServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="2955">
+          <caret line="20" column="49" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/frontend/thread/ThreadListServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="752" max-vertical-offset="1290">
+          <caret line="92" column="70" selection-start-line="92" selection-start-column="70" selection-end-line="92" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/frontend/user/UserCreateServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="782" max-vertical-offset="1380">
+          <caret line="92" column="61" selection-start-line="92" selection-start-column="61" selection-end-line="92" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/frontend/user/UserDetailsServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="118" max-vertical-offset="840">
+          <caret line="41" column="28" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/frontend/user/UserListServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="1050">
+          <caret line="48" column="28" selection-start-line="48" selection-start-column="28" selection-end-line="48" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/frontend/post/PostDetailsServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.4602804" vertical-offset="632" max-vertical-offset="1230">
+          <caret line="43" column="28" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/frontend/user/UserListPostsServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.77102804" vertical-offset="510" max-vertical-offset="1125">
+          <caret line="75" column="62" selection-start-line="75" selection-start-column="62" selection-end-line="75" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/frontend/post/PostListServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.87616825" vertical-offset="870" max-vertical-offset="1440">
+          <caret line="99" column="62" selection-start-line="99" selection-start-column="62" selection-end-line="99" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/frontend/thread/ThreadListPostsServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.91121495" vertical-offset="1380" max-vertical-offset="1935">
+          <caret line="137" column="58" selection-start-line="137" selection-start-column="58" selection-end-line="137" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/frontend/user/UserUpdateServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="1110">
@@ -1283,18 +1194,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mysql/ConnectionPool.java">
+    <entry file="file://$PROJECT_DIR$/src/mysql/MySqlConnect.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="1305">
-          <caret line="17" column="45" selection-start-line="17" selection-start-column="45" selection-end-line="17" selection-end-column="45" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="9023" max-vertical-offset="11445">
+          <caret line="611" column="0" selection-start-line="611" selection-start-column="0" selection-end-line="611" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#655#656#0" expanded="true" />
+            <element signature="e#719#720#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/out/2015_07_04_22_10_48/server.log">
+    <entry file="file://$PROJECT_DIR$/src/mysql/ConnectionPool.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.2593458" vertical-offset="1395" max-vertical-offset="12630">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.27210885" vertical-offset="45" max-vertical-offset="1305">
+          <caret line="19" column="49" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
           <folding />
         </state>
       </provider>

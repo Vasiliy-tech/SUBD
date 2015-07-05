@@ -86,9 +86,11 @@ public class ThreadListServlet extends HttpServlet {
         if (status != ErrorMessages.ok || resultSet == null) {
             obj.put("response", message);
         } else {
+            mySqlServer.prepareStatementsForThreadDetails(false, false);
             while (resultSet.next()) {
                 listThreads.add(mySqlServer.getThreadDetailsById(resultSet.getInt("id"), false, false));
             }
+            mySqlServer.closeStatementsForThreadDetails(false, false);
             obj.put("response", listThreads);
         }
         obj.put("code", status);

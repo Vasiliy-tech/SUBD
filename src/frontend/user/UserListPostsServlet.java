@@ -69,10 +69,11 @@ public class UserListPostsServlet extends HttpServlet {
         JSONArray postList = new JSONArray();
         JSONObject post;
         if (resultSet != null) {
+            mySqlServer.prepareStatementsForPostDetails();
             while (resultSet.next()) {
-                post = mySqlServer.getPostDetails(resultSet.getInt("id"), false, false, false);
-                postList.add(post);
+                postList.add(mySqlServer.getPostDetailsWithPrepareStatement(resultSet.getInt("id"), false, false, false));
             }
+            mySqlServer.closePrepareStatementForPostDetails();
         } else {
             status = ErrorMessages.noRequestedObject;
             message = ErrorMessages.noPost();

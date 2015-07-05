@@ -129,11 +129,13 @@ public class ThreadListPostsServlet extends HttpServlet {
             data.put("error", message);
             obj.put("response", data);
         } else {
+            mySqlServer.prepareStatementsForPostDetails();
             while (resultSet.next()) {
-                listPosts.add(mySqlServer.getPostDetails(resultSet.getInt("id"), false, false, false));
+                listPosts.add(mySqlServer.getPostDetailsWithPrepareStatement(resultSet.getInt("id"), false, false, false));
             }
             obj.put("response", listPosts);
         }
+        mySqlServer.closePrepareStatementForPostDetails();
         obj.put("code", status);
         logger.info(LoggerHelper.responseJSON(), obj.toString());
         response.getWriter().write(obj.toString());

@@ -19,7 +19,7 @@ public class ServiceClearServlet extends HttpServlet {
     private MySqlConnect mySqlServer;
 
     public ServiceClearServlet(MySqlConnect mySqlServer) {
-        //this.mySqlServer = mySqlServer;
+        this.mySqlServer = new MySqlConnect();
     }
 
     public void doPost(HttpServletRequest request,

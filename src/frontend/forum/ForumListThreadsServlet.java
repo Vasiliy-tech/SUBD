@@ -52,7 +52,7 @@ public class ForumListThreadsServlet extends HttpServlet {
         ResultSet resultSet;
         Statement statement = mySqlServer.getStatement();
 
-        // TODO index forum: short_name, id || thread: forum_id, date_of_creating
+
         query.append("select id from thread t ")
                 .append("where forum_id = '")
                 .append(forumId)
@@ -104,8 +104,9 @@ public class ForumListThreadsServlet extends HttpServlet {
             }
             if (status == ErrorMessages.ok) {
                 while (resultSet.next()) {
-                    listThreads.add(mySqlServer.getThreadDetailsById(resultSet.getInt("id"), user, forum));
+                    listThreads.add(mySqlServer.getThreadDetailsByIdWithPreparedStatements(resultSet.getInt("id"), user, forum));
                 }
+                mySqlServer.closeStatementsForThreadDetails(user, forum);
                 obj.put("response", listThreads);
             } else {
                 data.put("error", message);

@@ -111,8 +111,9 @@ public class ForumListPostsServlet extends HttpServlet {
             }
             if (status == ErrorMessages.ok) {
                 while (resultSet.next()) {
-                    listPosts.add(mySqlServer.getPostDetails(resultSet.getInt("id"), user, thread, forum));
+                    listPosts.add(mySqlServer.getPostDetailsWithPrepareStatement(resultSet.getInt("id"), user, thread, forum));
                 }
+                mySqlServer.closePrepareStatementForPostDetails();
                 obj.put("response", listPosts);
             } else {
                 data.put("error", message);

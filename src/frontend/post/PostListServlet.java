@@ -92,10 +92,12 @@ public class PostListServlet extends HttpServlet {
 
         if (status != ErrorMessages.ok || resultSet == null) {
             obj.put("response", message);
+            mySqlServer.prepareStatementsForPostDetails();
         } else {
             while (resultSet.next()) {
-                listPosts.add(mySqlServer.getPostDetails(resultSet.getInt("id"), false, false, false));
+                listPosts.add(mySqlServer.getPostDetailsWithPrepareStatement(resultSet.getInt("id"), false, false, false));
             }
+            mySqlServer.closePrepareStatementForPostDetails();
             obj.put("response", listPosts);
         }
         obj.put("code", status);

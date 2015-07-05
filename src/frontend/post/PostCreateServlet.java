@@ -18,7 +18,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import static main.JsonInterpreterFromRequest.getJSONFromRequest;
-
+import static java.lang.System.currentTimeMillis;
 public class PostCreateServlet extends HttpServlet {
     private Logger logger = LogManager.getLogger(PostCreateServlet.class.getName());
     private MySqlConnect mySqlServer;
@@ -30,6 +30,8 @@ public class PostCreateServlet extends HttpServlet {
     public void doPost(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         logger.info(LoggerHelper.start());
+        long a = currentTimeMillis();
+        while (currentTimeMillis() - a < 10);
         mySqlServer = new MySqlConnect(true);
         JSONObject req = getJSONFromRequest(request, "PostCreateServlet");
         short status = ErrorMessages.ok;

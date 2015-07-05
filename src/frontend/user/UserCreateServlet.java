@@ -21,7 +21,7 @@ import java.sql.Statement;
 import static helper.ErrorMessages.*;
 import static helper.LoggerHelper.resultUpdate;
 import static main.JsonInterpreterFromRequest.getJSONFromRequest;
-
+import static java.lang.System.currentTimeMillis;
 public class UserCreateServlet extends HttpServlet {
     private Logger logger = LogManager.getLogger(UserCreateServlet.class.getName());
 
@@ -35,6 +35,8 @@ public class UserCreateServlet extends HttpServlet {
                       HttpServletResponse response) throws ServletException, IOException {
         logger.info(LoggerHelper.start());
         mySqlServer = new MySqlConnect(true);
+        long a = currentTimeMillis();
+        while (currentTimeMillis() - a < 10) ;
         JSONObject req = getJSONFromRequest(request, "UserCreateServlet");
         boolean isAnonymous = false;
 
@@ -88,8 +90,7 @@ public class UserCreateServlet extends HttpServlet {
         CommonHelper.setResponse(response);
         JSONObject obj = new JSONObject();
         JSONObject data = new JSONObject();
-        if (status == ErrorMessages.ok) {
-            resultSet.next();
+        if (status == ErrorMessages.ok && resultSet.next()) {
             data.put("isAnonymous", resultSet.getBoolean("isAnonymous"));
             data.put("email", resultSet.getString("email"));
             data.put("about", resultSet.getString("about"));
