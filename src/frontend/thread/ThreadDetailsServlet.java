@@ -23,14 +23,14 @@ public class ThreadDetailsServlet extends HttpServlet {
     private Logger logger = LogManager.getLogger(ThreadDetailsServlet.class.getName());
     private MySqlConnect mySqlServer;
 
-    public ThreadDetailsServlet(MySqlConnect mySqlServer) {
-        //this.mySqlServer = mySqlServer;
+    public ThreadDetailsServlet() {
+        this.mySqlServer = new MySqlConnect();
     }
 
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         logger.info(LoggerHelper.start());
-        mySqlServer = new MySqlConnect(true);
+        mySqlServer.init();
         Map<String, String[]> paramMap = request.getParameterMap();
 
         String thread = request.getParameter("thread");

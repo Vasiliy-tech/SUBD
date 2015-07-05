@@ -25,14 +25,14 @@ public class UserListServlet extends HttpServlet {
 
     private MySqlConnect mySqlServer;
 
-    public UserListServlet(MySqlConnect mySqlServer) {
-        //this.mySqlServer = mySqlServer;
+    public UserListServlet() {
+        this.mySqlServer = new MySqlConnect();
     }
 
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         logger.info(LoggerHelper.start());
-        mySqlServer = new MySqlConnect(true);
+        mySqlServer.init();
         short status = ErrorMessages.ok;
         String message = "";
         ResultSet resultSet = null;
@@ -56,7 +56,7 @@ public class UserListServlet extends HttpServlet {
         JSONObject user;
 
         ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
-        while(resultSet.next()) {
+        while(resultSet != null && resultSet.next()) {
             user = new JSONObject();
 
             int numberOfColumns = resultSetMetaData.getColumnCount();

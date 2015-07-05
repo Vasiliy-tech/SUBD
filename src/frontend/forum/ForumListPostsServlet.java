@@ -27,14 +27,14 @@ public class ForumListPostsServlet extends HttpServlet {
     private Logger logger = LogManager.getLogger(ForumListPostsServlet.class.getName());
     private MySqlConnect mySqlServer;
 
-    public ForumListPostsServlet(MySqlConnect mySqlServer) {
-        //this.mySqlServer = mySqlServer;
+    public ForumListPostsServlet() {
+        this.mySqlServer = new MySqlConnect();
     }
 
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         logger.info(LoggerHelper.start());
-        mySqlServer = new MySqlConnect(true);
+        mySqlServer.init();
 
         Map<String, String[]> paramMap = request.getParameterMap();
         String forum = paramMap.containsKey("forum") ? paramMap.get("forum")[0] : null;
@@ -110,7 +110,7 @@ public class ForumListPostsServlet extends HttpServlet {
                 }
             }
             if (status == ErrorMessages.ok) {
-                while (resultSet.next()) {
+                while (resultSet != null && resultSet.next()) {
                     listPosts.add(mySqlServer.getPostDetailsWithPrepareStatement(resultSet.getInt("id"), user, thread, forum));
                 }
                 mySqlServer.closePrepareStatementForPostDetails();

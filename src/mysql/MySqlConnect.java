@@ -23,7 +23,7 @@ public class MySqlConnect {
 
     }
 
-    public MySqlConnect(boolean withConnectionPool) {
+    public void init() {
         this.connection = connectionPool.getConnection();
     }
 
@@ -108,7 +108,7 @@ public class MySqlConnect {
 
         String parent = null;
         try {
-            if(resultSet1.next()) {
+            if(resultSet1 != null && resultSet1.next()) {
                 parent = resultSet1.getString("parent");
             }
         } catch (Exception e) {
@@ -126,7 +126,7 @@ public class MySqlConnect {
         resultSet1 = executeSelect(query, statement1);
         String forumName = null;
         try {
-            if(resultSet1.next()) {
+            if(resultSet1 != null && resultSet1.next()) {
                 forumName = resultSet1.getString("name");
             }
         } catch (Exception e) {
@@ -145,7 +145,7 @@ public class MySqlConnect {
         int userId = -1;
 
         try {
-            if (preSet.next()) {
+            if (preSet != null && preSet.next()) {
                 userId = preSet.getInt("id");
             }
         } catch (Exception e) {
@@ -165,7 +165,7 @@ public class MySqlConnect {
         preSet = executeSelect(query, preStatement);
 
         try {
-            if (preSet.next()) {
+            if (preSet != null && preSet.next()) {
                 forumId = preSet.getInt("id");
             }
         } catch (Exception e) {
@@ -188,7 +188,7 @@ public class MySqlConnect {
         JSONObject data = new JSONObject();
         resultSet = executeSelect(query, statement);
         try {
-            if(resultSet.next()) {
+            if(resultSet != null && resultSet.next()) {
                 data.put("isAnonymous", resultSet.getBoolean("isAnonymous"));
                 data.put("email", resultSet.getString("email"));
                 data.put("about", resultSet.getString("about").equals("")? null : resultSet.getString("about"));
@@ -217,13 +217,13 @@ public class MySqlConnect {
             JSONArray iAmFollowed = new JSONArray();
             JSONArray subscribed = new JSONArray();
 
-            while(followee.next()) {
+            while(followee != null && followee.next()) {
                 toFollow.add(followee.getString(1));
             }
-            while(follower.next()) {
+            while(follower != null && follower.next()) {
                 iAmFollowed.add(follower.getString(1));
             }
-            while(subscription.next()) {
+            while(subscription != null && subscription.next()) {
                 subscribed.add(subscription.getInt(1));
             }
             data.put("following", toFollow);
@@ -250,7 +250,7 @@ public class MySqlConnect {
         query = "select * from users where id = '" + id + "';";
         resultSet = executeSelect(query, statement);
         try {
-            if(resultSet.next()) {
+            if(resultSet != null && resultSet.next()) {
                 query = "select email from users use index (id__email) join follow on followee_id = id where follower_id = " + resultSet.getInt("id") + ";";
                 followee = executeSelect(query, statement_followee);
                 query = "select email from users use index (id__email) join follow on follower_id = id where followee_id = " + resultSet.getInt("id") + ";";
@@ -281,13 +281,13 @@ public class MySqlConnect {
             data.put("name", resultSet.getString("name").equals("") ? null : resultSet.getString("name"));
             data.put("username", resultSet.getString("username").equals("")? null : resultSet.getString("username") );
             data.put("id", resultSet.getInt("id"));
-            while(followee.next()) {
+            while(followee != null && followee.next()) {
                 toFollow.add(followee.getString(1));
             }
-            while(follower.next()) {
+            while(follower != null && follower.next()) {
                 iAmFollowed.add(follower.getString(1));
             }
-            while(subscription.next()) {
+            while(subscription != null && subscription.next()) {
                 subscribed.add(subscription.getInt(1));
             }
             data.put("following", toFollow);
@@ -417,7 +417,7 @@ public class MySqlConnect {
             } else {
                 threadShortForumStatement.setInt(1, resultSet.getInt(1));
                 ResultSet shortNameResultSet= threadShortForumStatement.executeQuery();
-                if (shortNameResultSet.next()) {
+                if (shortNameResultSet != null && shortNameResultSet.next()) {
                     data.put("forum", shortNameResultSet.getString(1));
                 }
                 shortNameResultSet.close();
@@ -436,7 +436,7 @@ public class MySqlConnect {
             } else {
                 threadEmailStatement.setInt(1, resultSet.getInt(2));
                 ResultSet emailResultSet= threadEmailStatement.executeQuery();
-                if (emailResultSet.next()) {
+                if (emailResultSet != null && emailResultSet.next()) {
                     data.put("user", emailResultSet.getString(1));
                 }
                 emailResultSet.close();
@@ -463,7 +463,7 @@ public class MySqlConnect {
         resultSet = executeSelect(query, statement);
 
         JSONObject data = new JSONObject();
-        if (resultSet.next()) {
+        if (resultSet != null && resultSet.next()) {
             if (related != null) {
                 data.put("user", getUserDetail(resultSet.getInt(2)));
             } else {
@@ -521,7 +521,7 @@ public class MySqlConnect {
         resultSet = executeSelect(query, statement);
         JSONObject data = new JSONObject();
 
-        if (resultSet.next()) {
+        if (resultSet != null && resultSet.next()) {
             data.put("date", resultSet.getString("date").substring(0, 19));
             data.put("dislikes", resultSet.getInt("dislikes"));
             if (forum) {
@@ -633,7 +633,7 @@ public class MySqlConnect {
                 postDetailsForumStatement.setInt(1, forumId);
                 ResultSet forumResultSet = postDetailsForumStatement.executeQuery();
                 try {
-                    if (forumResultSet.next()) {
+                    if (forumResultSet != null && forumResultSet.next()) {
                         data.put("forum", forumResultSet.getString(1));
                     }
                     else {
@@ -704,7 +704,7 @@ public class MySqlConnect {
                 forumResultSet = executeSelect(queryForum, forumStatement);
 
                 try {
-                    if (forumResultSet.next())
+                    if (forumResultSet != null && forumResultSet.next())
                         data.put("forum", forumResultSet.getString("short_name"));
                     else {
                         data.put("forum", null);

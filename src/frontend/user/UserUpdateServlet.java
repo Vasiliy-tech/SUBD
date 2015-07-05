@@ -24,8 +24,8 @@ public class UserUpdateServlet extends HttpServlet {
 
     private MySqlConnect mySqlServer;
 
-    public UserUpdateServlet(MySqlConnect mySqlServer) {
-        //this.mySqlServer = mySqlServer;
+    public UserUpdateServlet() {
+        this.mySqlServer = new MySqlConnect();
     }
 
     public void doPost(HttpServletRequest request,
@@ -33,7 +33,7 @@ public class UserUpdateServlet extends HttpServlet {
         logger.info(start());
 
         JSONObject req = getJSONFromRequest(request, "UserCreate");
-        mySqlServer = new MySqlConnect(true);
+        mySqlServer.init();
 
         short status = ok;
         String message = "";

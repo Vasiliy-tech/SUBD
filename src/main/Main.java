@@ -13,7 +13,7 @@ public class Main {
             String portString = args[0];
             port = Integer.valueOf(portString);
         } else {
-            logger.info("Порт не задан.");
+            //logger.info("Порт не задан.");
         }
 
         logger.info("Starting at port: {}", String.valueOf(port));

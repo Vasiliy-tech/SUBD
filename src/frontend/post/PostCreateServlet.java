@@ -23,8 +23,8 @@ public class PostCreateServlet extends HttpServlet {
     private Logger logger = LogManager.getLogger(PostCreateServlet.class.getName());
     private MySqlConnect mySqlServer;
 
-    public PostCreateServlet(MySqlConnect mySqlServer) {
-        //this.mySqlServer = mySqlServer;
+    public PostCreateServlet() {
+        this.mySqlServer = new MySqlConnect();
     }
 
     public void doPost(HttpServletRequest request,
@@ -32,7 +32,7 @@ public class PostCreateServlet extends HttpServlet {
         logger.info(LoggerHelper.start());
         long a = currentTimeMillis();
         while (currentTimeMillis() - a < 10);
-        mySqlServer = new MySqlConnect(true);
+        mySqlServer.init();
         JSONObject req = getJSONFromRequest(request, "PostCreateServlet");
         short status = ErrorMessages.ok;
         String message = "";

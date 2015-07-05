@@ -21,14 +21,14 @@ public class PostRemoveServlet extends HttpServlet {
     private Logger logger = LogManager.getLogger(PostRemoveServlet.class.getName());
     private MySqlConnect mySqlServer;
 
-    public PostRemoveServlet(MySqlConnect mySqlServer) {
-        //this.mySqlServer = mySqlServer;
+    public PostRemoveServlet() {
+        this.mySqlServer = new MySqlConnect();
     }
 
     public void doPost(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         logger.info(LoggerHelper.start());
-        mySqlServer = new MySqlConnect(true);
+        mySqlServer.init();
         JSONObject req = getJSONFromRequest(request, "PostRemove");
 
         short status = ErrorMessages.ok;

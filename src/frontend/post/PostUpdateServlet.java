@@ -21,14 +21,14 @@ public class PostUpdateServlet extends HttpServlet {
     private Logger logger = LogManager.getLogger(PostUpdateServlet.class.getName());
     private MySqlConnect mySqlServer;
 
-    public PostUpdateServlet(MySqlConnect mySqlServer) {
-        //this.mySqlServer = mySqlServer;
+    public PostUpdateServlet() {
+        this.mySqlServer = new MySqlConnect();
     }
 
     public void doPost(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         logger.info(LoggerHelper.start());
-        mySqlServer = new MySqlConnect(true);
+        mySqlServer.init();
         JSONObject req = getJSONFromRequest(request, "PostUpdate");
 
         short status = ErrorMessages.ok;

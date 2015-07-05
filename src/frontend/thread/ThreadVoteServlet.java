@@ -22,14 +22,14 @@ public class ThreadVoteServlet extends HttpServlet {
     private Logger logger = LogManager.getLogger(ThreadVoteServlet.class.getName());
     private MySqlConnect mySqlServer;
 
-    public ThreadVoteServlet(MySqlConnect mySqlServer) {
-        //this.mySqlServer = mySqlServer;
+    public ThreadVoteServlet() {
+        this.mySqlServer = new MySqlConnect();
     }
 
     public void doPost(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         logger.info(LoggerHelper.start());
-        mySqlServer = new MySqlConnect(true);
+        mySqlServer.init();
 
         JSONObject req = getJSONFromRequest(request, "Thread_vote");
 

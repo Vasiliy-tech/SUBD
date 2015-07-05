@@ -22,14 +22,14 @@ public class ThreadRemoveServlet extends HttpServlet {
 
     private MySqlConnect mySqlServer;
 
-    public ThreadRemoveServlet(MySqlConnect mySqlServer) {
-        //this.mySqlServer = mySqlServer;
+    public ThreadRemoveServlet() {
+        this.mySqlServer = new MySqlConnect();
     }
 
     public void doPost(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         logger.info(LoggerHelper.start());
-        mySqlServer = new MySqlConnect(true);
+        mySqlServer.init();
 
         JSONObject req = getJSONFromRequest(request, "ThreadRemoveServlet");
 

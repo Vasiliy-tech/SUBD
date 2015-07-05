@@ -6,7 +6,6 @@ import frontend.forum.*;
 import frontend.post.*;
 import frontend.thread.*;
 import frontend.user.*;
-import mysql.MySqlConnect;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.HandlerList;
@@ -20,56 +19,54 @@ public class AppServer {
     private Server server;
     public AppServer(int port) {
 
-        MySqlConnect mySqlServer = new mysql.MySqlConnect();
-
         server = new Server(port);
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         String entity;
-        context.addServlet(new ServletHolder(new ServiceClearServlet(mySqlServer)), "/db/api/clear/");
-        context.addServlet(new ServletHolder(new ServiceStatusServlet(mySqlServer)), "/db/api/status/");
+        context.addServlet(new ServletHolder(new ServiceClearServlet()), "/db/api/clear/");
+        context.addServlet(new ServletHolder(new ServiceStatusServlet()), "/db/api/status/");
 
         entity = "user";
-        addServletToContext(context, new UserListServlet(mySqlServer), entity, "getAll");
-        addServletToContext(context, new UserListFollowerServlet(mySqlServer), entity, "listFollowers");
-        addServletToContext(context, new UserListFolloweeServlet(mySqlServer), entity, "listFollowing");
-        addServletToContext(context, new UserCreateServlet(mySqlServer), entity, "create");
-        addServletToContext(context, new UserDetailsServlet(mySqlServer), entity, "details");
-        addServletToContext(context, new UserFollowServlet(mySqlServer), entity, "follow");
-        addServletToContext(context, new UserUnfollowServlet(mySqlServer), entity, "unfollow");
-        addServletToContext(context, new UserUpdateServlet(mySqlServer), entity, "updateProfile");
-        addServletToContext(context, new UserListPostsServlet(mySqlServer), entity, "listPosts");
+        addServletToContext(context, new UserListServlet(), entity, "getAll");
+        addServletToContext(context, new UserListFollowerServlet(), entity, "listFollowers");
+        addServletToContext(context, new UserListFolloweeServlet(), entity, "listFollowing");
+        addServletToContext(context, new UserCreateServlet(), entity, "create");
+        addServletToContext(context, new UserDetailsServlet(), entity, "details");
+        addServletToContext(context, new UserFollowServlet(), entity, "follow");
+        addServletToContext(context, new UserUnfollowServlet(), entity, "unfollow");
+        addServletToContext(context, new UserUpdateServlet(), entity, "updateProfile");
+        addServletToContext(context, new UserListPostsServlet(), entity, "listPosts");
 
         entity = "forum";
-        addServletToContext(context, new ForumCreateServlet(mySqlServer), entity, "create");
-        addServletToContext(context, new ForumListUsersServlet(mySqlServer), entity, "listUsers");
-        addServletToContext(context, new ForumDetailsServlet(mySqlServer), entity, "details");
-        addServletToContext(context, new ForumListThreadsServlet(mySqlServer), entity, "listThreads");
-        addServletToContext(context, new ForumListPostsServlet(mySqlServer), entity, "listPosts");
+        addServletToContext(context, new ForumCreateServlet(), entity, "create");
+        addServletToContext(context, new ForumListUsersServlet(), entity, "listUsers");
+        addServletToContext(context, new ForumDetailsServlet(), entity, "details");
+        addServletToContext(context, new ForumListThreadsServlet(), entity, "listThreads");
+        addServletToContext(context, new ForumListPostsServlet(), entity, "listPosts");
 
         entity = "thread";
-        addServletToContext(context, new ThreadCreateServlet(mySqlServer), entity, "create");
-        addServletToContext(context, new ThreadDetailsServlet(mySqlServer), entity, "details");
-        addServletToContext(context, new ThreadCloseServlet(mySqlServer), entity, "close");
-        addServletToContext(context, new ThreadListServlet(mySqlServer), entity, "list");
-        addServletToContext(context, new ThreadListPostsServlet(mySqlServer), entity, "listPosts");
-        addServletToContext(context, new ThreadOpenServlet(mySqlServer), entity, "open");
-        addServletToContext(context, new ThreadRemoveServlet(mySqlServer), entity, "remove");
-        addServletToContext(context, new ThreadRestoreServlet(mySqlServer), entity, "restore");
-        addServletToContext(context, new ThreadSubscribeServlet(mySqlServer), entity, "subscribe");
-        addServletToContext(context, new ThreadUnsubscribeServlet(mySqlServer), entity, "unsubscribe");
-        addServletToContext(context, new ThreadUpdateServlet(mySqlServer), entity, "update");
-        addServletToContext(context, new ThreadVoteServlet(mySqlServer), entity, "vote");
+        addServletToContext(context, new ThreadCreateServlet(), entity, "create");
+        addServletToContext(context, new ThreadDetailsServlet(), entity, "details");
+        addServletToContext(context, new ThreadCloseServlet(), entity, "close");
+        addServletToContext(context, new ThreadListServlet(), entity, "list");
+        addServletToContext(context, new ThreadListPostsServlet(), entity, "listPosts");
+        addServletToContext(context, new ThreadOpenServlet(), entity, "open");
+        addServletToContext(context, new ThreadRemoveServlet(), entity, "remove");
+        addServletToContext(context, new ThreadRestoreServlet(), entity, "restore");
+        addServletToContext(context, new ThreadSubscribeServlet(), entity, "subscribe");
+        addServletToContext(context, new ThreadUnsubscribeServlet(), entity, "unsubscribe");
+        addServletToContext(context, new ThreadUpdateServlet(), entity, "update");
+        addServletToContext(context, new ThreadVoteServlet(), entity, "vote");
 
 
         entity = "post";
-        addServletToContext(context, new PostCreateServlet(mySqlServer), entity, "create");
-        addServletToContext(context, new PostDetailsServlet(mySqlServer), entity, "details");
-        addServletToContext(context, new PostListServlet(mySqlServer), entity, "list");
-        addServletToContext(context, new PostRemoveServlet(mySqlServer), entity, "remove");
-        addServletToContext(context, new PostRestoreServlet(mySqlServer), entity, "restore");
-        addServletToContext(context, new PostUpdateServlet(mySqlServer), entity, "update");
-        addServletToContext(context, new PostVoteServlet(mySqlServer), entity, "vote");
+        addServletToContext(context, new PostCreateServlet(), entity, "create");
+        addServletToContext(context, new PostDetailsServlet(), entity, "details");
+        addServletToContext(context, new PostListServlet(), entity, "list");
+        addServletToContext(context, new PostRemoveServlet(), entity, "remove");
+        addServletToContext(context, new PostRestoreServlet(), entity, "restore");
+        addServletToContext(context, new PostUpdateServlet(), entity, "update");
+        addServletToContext(context, new PostVoteServlet(), entity, "vote");
 
         ResourceHandler resource_handler = new ResourceHandler();
         resource_handler.setDirectoriesListed(false);

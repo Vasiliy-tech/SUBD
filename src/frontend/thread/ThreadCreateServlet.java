@@ -25,14 +25,14 @@ public class ThreadCreateServlet extends HttpServlet {
 
     private MySqlConnect mySqlServer;
 
-    public ThreadCreateServlet(MySqlConnect mySqlServer) {
-        //this.mySqlServer = mySqlServer;
+    public ThreadCreateServlet() {
+        this.mySqlServer = new MySqlConnect();
     }
 
     public void doPost(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         logger.info(start());
-        mySqlServer = new MySqlConnect(true);
+        mySqlServer.init();
         JSONObject req = getJSONFromRequest(request, "ThreadCreate");
         boolean isDeleted = false;
         if (req.containsKey("isDeleted")) {
@@ -101,7 +101,7 @@ public class ThreadCreateServlet extends HttpServlet {
         if (status != ErrorMessages.ok) {
             data.put("error", message);
         } else {
-            if (resultSet.next()) {
+            if (resultSet != null && resultSet.next()) {
                 data.put("forum", resultSet.getString("forum"));
                 data.put("id", resultSet.getInt("id"));
                 data.put("isClosed", resultSet.getBoolean("isClosed"));

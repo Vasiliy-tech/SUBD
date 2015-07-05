@@ -20,14 +20,14 @@ public class ServiceStatusServlet extends HttpServlet {
 
     private MySqlConnect mySqlServer;
 
-    public ServiceStatusServlet(MySqlConnect mySqlServer) {
-        //this.mySqlServer = mySqlServer;
+    public ServiceStatusServlet() {
+        this.mySqlServer = new MySqlConnect();
     }
 
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         logger.info(LoggerHelper.start());
-        mySqlServer = new MySqlConnect(true);
+        mySqlServer.init();
         response.setContentType("json;charset=UTF-8");
         response.setHeader("Cache-Control", "no-cache");
         response.setStatus(HttpServletResponse.SC_OK);

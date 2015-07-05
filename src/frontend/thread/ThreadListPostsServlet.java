@@ -26,14 +26,14 @@ public class ThreadListPostsServlet extends HttpServlet {
 
     private MySqlConnect mySqlServer;
 
-    public ThreadListPostsServlet(MySqlConnect mySqlServer) {
-        //this.mySqlServer = mySqlServer;
+    public ThreadListPostsServlet() {
+        this.mySqlServer = new MySqlConnect();
     }
 
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         logger.info(LoggerHelper.start());
-        mySqlServer = new MySqlConnect(true);
+        mySqlServer.init();
 
         short status = ErrorMessages.ok;
         String message = "";
@@ -91,7 +91,7 @@ public class ThreadListPostsServlet extends HttpServlet {
                     StringBuilder parents = new StringBuilder();
                     parents.append("('000'");
                     try {
-                        while (resultSetSub.next()) {
+                        while (resultSetSub != null && resultSetSub.next()) {
                             parents.append(" '" + format("%03d", resultSetSub.getInt("id")) + "'");
                         }
                     } catch (SQLException e) {

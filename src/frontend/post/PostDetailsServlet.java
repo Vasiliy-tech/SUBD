@@ -21,14 +21,14 @@ public class PostDetailsServlet extends HttpServlet {
 
     private MySqlConnect mySqlServer;
 
-    public PostDetailsServlet(MySqlConnect mySqlServer) {
-        //this.mySqlServer = mySqlServer;
+    public PostDetailsServlet() {
+        this.mySqlServer = new MySqlConnect();
     }
 
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         logger.info(LoggerHelper.start());
-        mySqlServer = new MySqlConnect(true);
+        mySqlServer.init();
         Map<String, String[]> paramMap = request.getParameterMap();
         int id = Integer.parseInt(paramMap.containsKey("post") ? paramMap.get("post")[0] : "0");
         String[] related = paramMap.get("related");

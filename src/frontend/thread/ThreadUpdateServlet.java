@@ -25,14 +25,14 @@ public class ThreadUpdateServlet extends HttpServlet {
 
     private MySqlConnect mySqlServer;
 
-    public ThreadUpdateServlet(MySqlConnect mySqlServer) {
-        //this.mySqlServer = mySqlServer;
+    public ThreadUpdateServlet() {
+        this.mySqlServer = new MySqlConnect();
     }
 
     public void doPost(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         logger.info(LoggerHelper.start());
-        mySqlServer = new MySqlConnect(true);
+        mySqlServer.init();
 
         JSONObject req = getJSONFromRequest(request, "PostUpdate");
 

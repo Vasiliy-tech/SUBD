@@ -22,14 +22,14 @@ public class ForumDetailsServlet extends HttpServlet {
     private Logger logger = LogManager.getLogger(ForumDetailsServlet.class.getName());
     private MySqlConnect mySqlServer;
 
-    public ForumDetailsServlet(MySqlConnect mySqlServer) {
-        //this.mySqlServer = mySqlServer;
+    public ForumDetailsServlet() {
+        this.mySqlServer = new MySqlConnect();
     }
 
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         logger.info(LoggerHelper.start());
-        mySqlServer = new MySqlConnect(true);
+        mySqlServer.init();
 
         String forum = request.getParameter("forum");
         String related = request.getParameter("related");

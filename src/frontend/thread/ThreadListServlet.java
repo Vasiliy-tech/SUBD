@@ -26,14 +26,14 @@ public class ThreadListServlet extends HttpServlet {
     private Logger logger = LogManager.getLogger(ThreadListServlet.class.getName());
     private MySqlConnect mySqlServer;
 
-    public ThreadListServlet(MySqlConnect mySqlServer) {
-        //this.mySqlServer = mySqlServer;
+    public ThreadListServlet() {
+        this.mySqlServer = new MySqlConnect();
     }
 
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         logger.info(start());
-        mySqlServer = new MySqlConnect(true);
+        mySqlServer.init();
 
         short status = ok;
         String message = "";
@@ -87,7 +87,7 @@ public class ThreadListServlet extends HttpServlet {
             obj.put("response", message);
         } else {
             mySqlServer.prepareStatementsForThreadDetails(false, false);
-            while (resultSet.next()) {
+            while (resultSet != null && resultSet.next()) {
                 listThreads.add(mySqlServer.getThreadDetailsById(resultSet.getInt("id"), false, false));
             }
             mySqlServer.closeStatementsForThreadDetails(false, false);

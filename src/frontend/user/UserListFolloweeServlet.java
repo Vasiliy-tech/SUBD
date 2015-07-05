@@ -26,14 +26,14 @@ public class UserListFolloweeServlet extends HttpServlet {
 
     private MySqlConnect mySqlServer;
 
-    public UserListFolloweeServlet(MySqlConnect mySqlServer) {
-        //this.mySqlServer = mySqlServer;
+    public UserListFolloweeServlet() {
+        this.mySqlServer = new MySqlConnect();
     }
 
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         logger.info(start());
-        mySqlServer = new MySqlConnect(true);
+        mySqlServer.init();
         String email = request.getParameter("user");
         String asc = request.getParameter("order");
         String since_id = request.getParameter("since");
@@ -75,7 +75,7 @@ public class UserListFolloweeServlet extends HttpServlet {
         if (status != ErrorMessages.ok || resultSet == null) {
             obj.put("response", message);
         } else {
-            while (resultSet.next()) {
+            while (resultSet != null && resultSet.next()) {
                 iFollow.add(mySqlServer.getUserDetail(resultSet.getInt("id")));
             }
             obj.put("response", iFollow);

@@ -27,14 +27,15 @@ public class UserListPostsServlet extends HttpServlet {
 
     private MySqlConnect mySqlServer;
 
-    public UserListPostsServlet(MySqlConnect mySqlServer) {
-        //this.mySqlServer = mySqlServer;
+    public UserListPostsServlet() {
+        this.mySqlServer = new MySqlConnect();
     }
+
 
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         logger.info(start());
-        mySqlServer = new MySqlConnect(true);
+        mySqlServer.init();
 
         short status = ok;
         String message = "";
@@ -70,7 +71,7 @@ public class UserListPostsServlet extends HttpServlet {
         JSONObject post;
         if (resultSet != null) {
             mySqlServer.prepareStatementsForPostDetails();
-            while (resultSet.next()) {
+            while (resultSet != null && resultSet.next()) {
                 postList.add(mySqlServer.getPostDetailsWithPrepareStatement(resultSet.getInt("id"), false, false, false));
             }
             mySqlServer.closePrepareStatementForPostDetails();

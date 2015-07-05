@@ -24,14 +24,14 @@ public class UserFollowServlet extends HttpServlet {
 
     private MySqlConnect mySqlServer;
 
-    public UserFollowServlet(MySqlConnect mySqlServer) {
-        //this.mySqlServer = mySqlServer;
+    public UserFollowServlet() {
+        this.mySqlServer = new MySqlConnect();
     }
 
     public void doPost(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         logger.info(start());
-        mySqlServer = new MySqlConnect(true);
+        mySqlServer.init();
         JSONObject req = getJSONFromRequest(request, "UserFollow");
 
         String email = (String) req.get("follower");

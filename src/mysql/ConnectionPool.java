@@ -13,9 +13,7 @@ import java.util.Properties;
 
 public class ConnectionPool  {
     private final String DRIVER = "com.mysql.jdbc.Driver";
-    private final String URL = "jdbc:mysql://localhost:3306/SMDBtest";
-    private final String USERNAME = "root";
-    private final String PASSWORD = "smokey";
+    private final String URL = "jdbc:mysql://localhost:3306/SMDB";
 
     private GenericObjectPool connectionPool = null;
     private DataSource dataSource = null;
@@ -42,7 +40,7 @@ public class ConnectionPool  {
         //
 
         connectionPool = new GenericObjectPool();
-        connectionPool.setMaxActive(10);
+        connectionPool.setMaxActive(4);
 
         //
         // Creates a connection factory object which will be use by
